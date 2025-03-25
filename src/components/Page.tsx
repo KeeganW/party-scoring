@@ -3,19 +3,17 @@ import {PlayerType} from 'src/utils/Types';
 
 export interface ActionDisplayProps {
   player: PlayerType;
-  playerIndex: number;
 }
 
 export interface PageProps {
   title: string;
   players: PlayerType[];
   actions: (props: ActionDisplayProps) => React.ReactNode;
-  display: (props: ActionDisplayProps) => React.ReactNode;
   undoAction: () => void;
   undoDisabled: boolean;
 }
 
-export const Page = ({title, players, actions, display, undoAction, undoDisabled}: PageProps) => {
+export const Page = ({title, players, actions, undoAction, undoDisabled}: PageProps) => {
   return (
     <Center>
       <Container>
@@ -28,23 +26,20 @@ export const Page = ({title, players, actions, display, undoAction, undoDisabled
           </div>
         </Center>
         <div style={{ marginTop: '80px' }}>
-          <Stack gap="xl">
+          <Group gap="lg">
             {players.map((player, playerIndex) => (
               <Card key={playerIndex}>
                 <Card.Section>
                   <Center>
-                    <Title order={4}>{player.name}</Title>
+                    <Title order={5}>{player.name}</Title>
                   </Center>
                 </Card.Section>
-                <Group>
-                  {actions({player, playerIndex})}
-                </Group>
-                <Group grow>
-                  {display({player, playerIndex})}
-                </Group>
+                <Stack>
+                  {actions({player})}
+                </Stack>
               </Card>
             ))}
-          </Stack>
+          </Group>
         </div>
       </Container>
     </Center>

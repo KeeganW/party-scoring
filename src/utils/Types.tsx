@@ -1,4 +1,4 @@
-import type {HockeyScore} from './Connect';
+import type {HockeyScore} from 'src/utils/Connect';
 
 export interface PlayerType {
   name: string;
