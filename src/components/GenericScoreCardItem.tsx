@@ -14,7 +14,7 @@ export const GenericScoreCardItem = ({ player, action, title, scores, setHistory
   return (
     <Group justify="space-between">
       <Text>
-        {title}: {playerScore[action]}
+        {title}: {playerScore[action] || 0}
       </Text>
       <ActionIcon onClick={() => { handleScore(player.id, action, setHistory, setScores); }}>
         <IconPlus />

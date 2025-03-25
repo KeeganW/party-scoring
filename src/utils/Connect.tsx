@@ -11,10 +11,24 @@ export const players: PlayerType[] = [
   { name: 'Keegan', id: 1 },
 ];
 
+export interface CheersGovernorScore {
+  forgot: number;
+  addedNumber: number;
+}
+
 export interface HockeyScore {
   scoredOn: number;
   finishedDrink: number;
   stoppedQuarter: number;
+}
+
+export interface MagicalMixersScore {
+  targetted: number;
+}
+
+export interface RideTheBusScore {
+  busRider: number;
+  emptyHand: number;
 }
 
 export interface SnappaScore {
@@ -23,8 +37,8 @@ export interface SnappaScore {
   sunk: number;
 }
 
-export type AllGenericScores = HockeyScore | SnappaScore;
-export type AllGenericScoresKeys = keyof HockeyScore | keyof SnappaScore;
+export type AllGenericScores = CheersGovernorScore | HockeyScore | MagicalMixersScore | RideTheBusScore | SnappaScore;
+export type AllGenericScoresKeys = keyof CheersGovernorScore | keyof HockeyScore | keyof MagicalMixersScore | keyof RideTheBusScore | keyof SnappaScore;
 
 export interface PlayerGenericScore<K extends string> {
   player: number;
@@ -42,7 +56,18 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
     const response = await axios.get<PlayerGenericScore<T>[]>(url);
 
     const fetchedScores = new Map<number, AllGenericScores>();
-    const defaultObject = { scoredOn: 0, finishedDrink: 0, stoppedQuarter: 0, points: 0, sinks: 0, sunk: 0 };
+    const defaultObject = {
+      // Cheers Governor
+      forgot: 0, addedNumber: 0,
+      // Hockey
+      scoredOn: 0, finishedDrink: 0, stoppedQuarter: 0,
+      // Magical Mixers
+      targetted: 0,
+      // Ride the Bus
+      busRider: 0, emptyHand: 0,
+      // Snappa
+      points: 0, sinks: 0, sunk: 0
+    };
 
     response.data.forEach(({ player, key, value }) => {
       if (!fetchedScores.has(player)) {
