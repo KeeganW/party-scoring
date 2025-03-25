@@ -1,4 +1,6 @@
-import {Button, Card, Center, Container, Group, Stack, Title} from '@mantine/core';
+import {ActionIcon, Button, Card, Center, Container, Group, Stack, Title} from '@mantine/core';
+import { IconArrowLeft } from '@tabler/icons-react';
+import { useNavigate } from 'react-router';
 import {PlayerType} from 'src/utils/Types';
 
 export interface ActionDisplayProps {
@@ -14,14 +16,20 @@ export interface PageProps {
 }
 
 export const Page = ({title, players, actions, undoAction, undoDisabled}: PageProps) => {
+  const navigate = useNavigate();
   return (
     <Center>
       <Container>
         <Center>
           <div style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'white', zIndex: 1000, padding: '10px 0' }}>
             <Center>
-              <Title order={1}>{title}</Title>
-              <Button onClick={undoAction} disabled={undoDisabled} style={{ marginLeft: '20px' }}>Undo</Button>
+              <Group gap="lg">
+                <ActionIcon onClick={() => navigate('/')}>
+                  <IconArrowLeft />
+                </ActionIcon>
+                <Title order={1}>{title}</Title>
+                <Button onClick={undoAction} disabled={undoDisabled}>Undo</Button>
+              </Group>
             </Center>
           </div>
         </Center>
