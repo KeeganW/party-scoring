@@ -36,7 +36,7 @@ export const Page = ({title, players, actions, undoAction, undoDisabled}: PagePr
         <div style={{ marginTop: '80px' }}>
           <Group gap="lg">
             {players.map((player, playerIndex) => (
-              <Card key={playerIndex}>
+              <Card shadow="sm" key={playerIndex} style={{minWidth: '160px'}}>
                 <Card.Section>
                   <Center>
                     <Title order={5}>{player.name}</Title>

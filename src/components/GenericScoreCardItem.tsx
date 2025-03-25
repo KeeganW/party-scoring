@@ -12,7 +12,7 @@ export const GenericScoreCardItem = ({ player, action, title, scores, setHistory
   }
 
   return (
-    <Group>
+    <Group justify="space-between">
       <Text>
         {title}: {playerScore[action]}
       </Text>
