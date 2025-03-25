@@ -1,8 +1,9 @@
-import type {HockeyScore} from 'src/utils/Connect';
+import type {HockeyScore} from './connect';
 
 export interface PlayerType {
   name: string;
   id: number;
+  color: string;
 }
 export interface HistoryItem {
   player: number;

@@ -1,4 +1,4 @@
-import {AllGenericScoresKeys, setGenericScore} from 'src/utils/Connect';
+import {AllGenericScoresKeys, setGenericScore} from './connect';
 
 // TODO fix this type
 export const handleScore = (playerId: number, type: AllGenericScoresKeys, setHistory: any, setScores: any) => {

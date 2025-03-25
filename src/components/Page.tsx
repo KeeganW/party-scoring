@@ -1,7 +1,7 @@
 import {ActionIcon, Button, Card, Center, Container, Group, Stack, Title} from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import { useNavigate } from 'react-router';
-import {PlayerType} from 'src/utils/Types';
+import {PlayerType} from 'src/utils/types';
 
 export interface ActionDisplayProps {
   player: PlayerType;
@@ -27,7 +27,7 @@ export const Page = ({title, players, actions, undoAction, undoDisabled}: PagePr
                 <ActionIcon onClick={() => navigate('/')}>
                   <IconArrowLeft />
                 </ActionIcon>
-                <Title order={1}>{title}</Title>
+                <Title order={2}>{title}</Title>
                 <Button onClick={undoAction} disabled={undoDisabled}>Undo</Button>
               </Group>
             </Center>

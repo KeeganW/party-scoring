@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Page } from 'src/components/Page';
 import { useImmer } from 'use-immer';
-import {HistoryItem, PlayerType} from 'src/utils/Types';
-import {fetchGenericScore, players, type HockeyScore} from 'src/utils/Connect';
+import {HistoryItem, PlayerType} from 'src/utils/types';
+import {fetchGenericScore, players, type HockeyScore} from 'src/utils/connect';
 import {handleUndo} from 'src/utils/commonFunctions';
 import {GenericScoreCardItem} from 'src/components/GenericScoreCardItem';
 
@@ -18,9 +18,10 @@ export const Hockey = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem player={player} action={'scoredOn'} title={'Scored On'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem player={player} action={'finishedDrink'} title={'Finished Drink'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem player={player} action={'stoppedQuarter'} title={'Stopped Quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem player={player} action={'scoredOn'} title={'Hit by quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem player={player} action={'finishedDrink'} title={'Finished drink'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem player={player} action={'stoppedQuarter'} title={'Stopped quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem player={player} action={'failStoppedQuarter'} title={'Failed to stop quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Page } from 'src/components/Page';
 import { useImmer } from 'use-immer';
-import {HistoryItem, PlayerType} from 'src/utils/Types';
-import {fetchGenericScore, players, type MagicalMixersScore} from 'src/utils/Connect';
+import {HistoryItem, PlayerType} from 'src/utils/types';
+import {fetchGenericScore, players, type MagicalMixersScore} from 'src/utils/connect';
 import {handleUndo} from 'src/utils/commonFunctions';
 import {GenericScoreCardItem} from 'src/components/GenericScoreCardItem';
 

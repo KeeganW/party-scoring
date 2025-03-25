@@ -1,5 +1,5 @@
-import {PlayerType} from 'src/utils/Types';
-import type {AllGenericScoresKeys} from 'src/utils/Connect';
+import {PlayerType} from 'src/utils/types';
+import type {AllGenericScoresKeys} from 'src/utils/connect';
 import {ActionIcon, Text, Group} from '@mantine/core';
 import {handleScore} from 'src/utils/commonFunctions';
 import { IconPlus } from '@tabler/icons-react';
@@ -16,7 +16,7 @@ export const GenericScoreCardItem = ({ player, action, title, scores, setHistory
       <Text>
         {title}: {playerScore[action] || 0}
       </Text>
-      <ActionIcon onClick={() => { handleScore(player.id, action, setHistory, setScores); }}>
+      <ActionIcon color={player.color} onClick={() => { handleScore(player.id, action, setHistory, setScores); }}>
         <IconPlus />
       </ActionIcon>
     </Group>

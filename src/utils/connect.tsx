@@ -1,14 +1,14 @@
 import axios from 'axios';
-import {PlayerType} from 'src/utils/Types';
+import {PlayerType} from './types';
 
 export const players: PlayerType[] = [
-  { name: 'Jedd', id: 310 },
-  { name: 'Nick', id: 311 },
-  { name: 'Matt', id: 190 },
-  { name: 'Ken', id: 312 },
-  { name: 'Max', id: 313 },
-  { name: 'Mike', id: 314 },
-  { name: 'Keegan', id: 1 },
+  { name: 'Jedd', id: 310, color: 'cyan' },
+  { name: 'Nick', id: 311, color: 'red' },
+  { name: 'Matt', id: 190, color: 'green' },
+  { name: 'Ken', id: 312, color: 'yellow' },
+  { name: 'Max', id: 313, color: 'purple' },
+  { name: 'Mike', id: 314, color: 'gray' },
+  { name: 'Keegan', id: 1, color: 'orange' },
 ];
 
 export interface CheersGovernorScore {
@@ -20,6 +20,7 @@ export interface HockeyScore {
   scoredOn: number;
   finishedDrink: number;
   stoppedQuarter: number;
+  failStoppedQuarter: number;
 }
 
 export interface MagicalMixersScore {
@@ -60,7 +61,7 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
       // Cheers Governor
       forgot: 0, addedNumber: 0,
       // Hockey
-      scoredOn: 0, finishedDrink: 0, stoppedQuarter: 0,
+      scoredOn: 0, finishedDrink: 0, stoppedQuarter: 0, failStoppedQuarter: 0,
       // Magical Mixers
       targetted: 0,
       // Ride the Bus
