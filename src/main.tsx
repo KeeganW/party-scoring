@@ -1,8 +1,8 @@
-import ReactDOM from "react-dom/client";
-import { HashRouter } from "react-router";
-import App from "./App";
+import ReactDOM from 'react-dom/client';
+import { HashRouter } from 'react-router';
+import App from 'src/App';
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
@@ -11,5 +11,5 @@ if (rootElement) {
     </HashRouter>
   );
 } else {
-  console.error("Root element not found");
+  console.error('Root element not found');
 }
