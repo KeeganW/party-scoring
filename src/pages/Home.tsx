@@ -2,9 +2,12 @@ import {Container, Button, Group, Center, Stack, Title} from '@mantine/core';
 import { Link } from 'react-router';
 
 const buttons = [
+  { text: 'Beer Die', link: '/beer_die' },
   { text: 'Cheers Governor', link: '/cheers_governor' },
   { text: 'Hockey', link: '/hockey' },
+  { text: 'Kings Cup', link: '/kings_cup' },
   { text: 'Magical Mixers', link: '/magical_mixers' },
+  { text: 'Pass the Pigs', link: '/pass_the_pigs' },
   { text: 'Ride the Bus', link: '/ride_the_bus' },
   { text: 'Snappa', link: '/snappa' },
 ];

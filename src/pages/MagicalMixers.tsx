@@ -5,8 +5,10 @@ import {HistoryItem, PlayerType} from 'src/utils/types';
 import {fetchGenericScore, players, type MagicalMixersScore} from 'src/utils/connect';
 import {handleUndo} from 'src/utils/commonFunctions';
 import {GenericScoreCardItem} from 'src/components/GenericScoreCardItem';
+import {setScoreFromWebSocket, useWebSocket} from "src/utils/websocket";
 
 export const MagicalMixers = () => {
+  const webSocket = useWebSocket("generic-score");
   const [scores, setScores] = useImmer<Map<number, MagicalMixersScore>>(new Map());
   const [history, setHistory] = useImmer<HistoryItem[]>([]);
 
@@ -14,17 +16,22 @@ export const MagicalMixers = () => {
     fetchGenericScore<keyof MagicalMixersScore>(setScores);
   }, [setScores]);
 
+  useEffect(() => {
+    setScoreFromWebSocket<keyof MagicalMixersScore>(webSocket, setScores);
+  }, [webSocket.updates]);
+
   const title = 'Magical Mixers';
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem player={player} action={'targetted'} title={'Targetted'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem webSocket={webSocket} player={player} action={'targetted'} title={'Targetted'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem webSocket={webSocket} player={player} action={'drinkWater'} title={'Drink Water'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 
   const undoDisabled = history.length === 0;
 
   return (
-    <Page title={title} players={players} actions={actions} undoAction={() => { handleUndo(setHistory, setScores); }} undoDisabled={undoDisabled} />
+    <Page title={title} players={players} actions={actions} undoAction={() => { handleUndo(setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />
   );
 };

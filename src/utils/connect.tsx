@@ -11,6 +11,12 @@ export const players: PlayerType[] = [
   { name: 'Nick', id: 311, color: 'red' },
 ];
 
+export interface BeerDieScore {
+  pointsDie: number;
+  sinksDie: number;
+  sunkDie: number;
+}
+
 export interface CheersGovernorScore {
   forgot: number;
   addedNumber: number;
@@ -23,8 +29,19 @@ export interface HockeyScore {
   failStoppedQuarter: number;
 }
 
+export interface KingsCupScore {
+  poppedCan: number;
+  kingRule: number;
+}
+
 export interface MagicalMixersScore {
   targetted: number;
+  drinkWater: number;
+}
+
+export interface PassThePigsScore {
+  above40: number;
+  piggedOut: number;
 }
 
 export interface RideTheBusScore {
@@ -38,8 +55,8 @@ export interface SnappaScore {
   sunk: number;
 }
 
-export type AllGenericScores = CheersGovernorScore | HockeyScore | MagicalMixersScore | RideTheBusScore | SnappaScore;
-export type AllGenericScoresKeys = keyof CheersGovernorScore | keyof HockeyScore | keyof MagicalMixersScore | keyof RideTheBusScore | keyof SnappaScore;
+export type AllGenericScores = BeerDieScore | CheersGovernorScore | HockeyScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore;
+export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof HockeyScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore;
 
 export interface PlayerGenericScore<K extends string> {
   player: number;
@@ -55,19 +72,26 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
   const url = `${baseUrl}generic_score/`;
   try {
     const response = await axios.get<PlayerGenericScore<T>[]>(url);
+    console.log(response.data)
 
     const fetchedScores = new Map<number, AllGenericScores>();
     const defaultObject = {
+      // Beer Die
+      pointsDie: 0, sinksDie: 0, sunkDie: 0,
       // Cheers Governor
       forgot: 0, addedNumber: 0,
       // Hockey
       scoredOn: 0, finishedDrink: 0, stoppedQuarter: 0, failStoppedQuarter: 0,
+      // Kings Cup
+      poppedCan: 0, kingRule: 0,
       // Magical Mixers
-      targetted: 0,
+      targetted: 0, drinkWater: 0,
+      // Pass the Pigs
+      above40: 0, piggedOut: 0,
       // Ride the Bus
       busRider: 0, emptyHand: 0,
       // Snappa
-      points: 0, sinks: 0, sunk: 0
+      points: 0, sinks: 0, sunk: 0,
     };
 
     response.data.forEach(({ player, key, value }) => {

@@ -3,9 +3,10 @@ import type {AllGenericScoresKeys} from 'src/utils/connect';
 import {ActionIcon, Text, Group} from '@mantine/core';
 import {handleScore} from 'src/utils/commonFunctions';
 import { IconPlus } from '@tabler/icons-react';
+import {WebSocketAction} from "src/utils/websocket";
 
 // TODO fix this type
-export const GenericScoreCardItem = ({ player, action, title, scores, setHistory, setScores }: { player: PlayerType, action: AllGenericScoresKeys, title: string, scores: any, setHistory: any, setScores: any }) => {
+export const GenericScoreCardItem = ({ player, action, title, scores, setHistory, setScores, webSocket }: { player: PlayerType, action: AllGenericScoresKeys, title: string, scores: any, setHistory: any, setScores: any, webSocket: WebSocketAction }) => {
   const playerScore = scores.get(player.id);
   if (!playerScore) {
     return null;
@@ -16,7 +17,7 @@ export const GenericScoreCardItem = ({ player, action, title, scores, setHistory
       <Text>
         {title}: {playerScore[action] || 0}
       </Text>
-      <ActionIcon color={player.color} onClick={() => { handleScore(player.id, action, setHistory, setScores); }}>
+      <ActionIcon color={player.color} onClick={() => { handleScore(player.id, action, setHistory, setScores, webSocket); }}>
         <IconPlus />
       </ActionIcon>
     </Group>
