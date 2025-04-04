@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Page } from 'src/components/Page';
 import { useImmer } from 'use-immer';
-import {BeerDieScore, HistoryItem, PlayerType} from 'src/utils/types';
-import {fetchGenericScore} from 'src/utils/connect';
-import {handleUndo} from 'src/utils/commonFunctions';
-import {GenericScoreCardItem} from 'src/components/GenericScoreCardItem';
-import {setScoreFromWebSocket, useWebSocket} from 'src/utils/websocket';
-import {players} from 'src/utils/constants';
+import { BeerDieScore, HistoryItem, PlayerType } from 'src/utils/types';
+import { fetchGenericScore } from 'src/utils/connect';
+import { handleUndo } from 'src/utils/commonFunctions';
+import { GenericScoreCardItem } from 'src/components/GenericScoreCardItem';
+import { setScoreFromWebSocket, useWebSocket } from 'src/utils/websocket';
+import { DESCRIPTIONS, players } from 'src/utils/constants';
 
 export const BeerDie = () => {
   const webSocket = useWebSocket('generic-score');
@@ -33,7 +33,10 @@ export const BeerDie = () => {
 
   const undoDisabled = history.length === 0;
 
+  const { pointsDie, sinksDie, sunkDie } = DESCRIPTIONS;
+  const descriptions = { pointsDie, sinksDie, sunkDie };
+
   return (
-    <Page title={title} players={players} actions={actions} undoAction={() => { handleUndo(setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />
+    <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />
   );
 };

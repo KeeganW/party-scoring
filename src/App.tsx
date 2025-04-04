@@ -4,7 +4,7 @@ import '@mantine/core/styles.css';
 
 import { MantineProvider } from '@mantine/core';
 import Routes from 'src/Routes';
-import {enableMapSet} from 'immer'
+import { enableMapSet } from 'immer'
 
 enableMapSet()
 

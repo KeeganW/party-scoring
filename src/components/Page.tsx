@@ -1,13 +1,14 @@
-import {ActionIcon, Button, Card, Center, Container, Group, Stack, Title} from '@mantine/core';
+import { ActionIcon, Button, Card, Center, Container, Group, Stack, Title } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import { useNavigate } from 'react-router';
-import {PlayerType} from 'src/utils/types';
+import { Descriptions, PlayerType } from 'src/utils/types';
 
 export interface ActionDisplayProps {
   player: PlayerType;
 }
 
 export interface PageProps {
+  descriptions?: Descriptions
   title: string;
   players: PlayerType[];
   actions: (props: ActionDisplayProps) => React.ReactNode;
@@ -15,7 +16,7 @@ export interface PageProps {
   undoDisabled: boolean;
 }
 
-export const Page = ({title, players, actions, undoAction, undoDisabled}: PageProps) => {
+export const Page = ({ descriptions, title, players, actions, undoAction, undoDisabled }: PageProps) => {
   const navigate = useNavigate();
   return (
     <Center>
@@ -25,7 +26,7 @@ export const Page = ({title, players, actions, undoAction, undoDisabled}: PagePr
             <Center>
               <Group gap="lg">
                 <ActionIcon onClick={() => {
-                  navigate('/')
+                  navigate('/games')
                 }}>
                   <IconArrowLeft />
                 </ActionIcon>
@@ -35,22 +36,33 @@ export const Page = ({title, players, actions, undoAction, undoDisabled}: PagePr
             </Center>
           </div>
         </Center>
-        <div style={{ marginTop: '80px' }}>
+        <Stack style={{ marginTop: '80px' }}>
           <Group gap="sm" justify="center">
             {players.map((player, playerIndex) => (
-              <Card shadow="sm" key={playerIndex} style={{minWidth: '170px'}}>
+              <Card shadow="sm" key={playerIndex} style={{ minWidth: '170px' }}>
                 <Card.Section>
                   <Center>
                     <Title order={5}>{player.name}</Title>
                   </Center>
                 </Card.Section>
                 <Stack>
-                  {actions({player})}
+                  {actions({ player })}
                 </Stack>
               </Card>
             ))}
           </Group>
-        </div>
+          <Center>
+            {descriptions && (
+              <div style={{ marginTop: '15px', fontSize: '0.9rem', color: '#555' }}>
+                {Object.entries(descriptions).map(([key, description]) => (
+                  <div key={key}>
+                    <strong>{description.title}:</strong> {description.text}
+                  </div>
+                ))}
+              </div>
+            )}
+          </Center>
+        </Stack>
       </Container>
     </Center>
   );

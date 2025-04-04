@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {AllGenericScores, AllGenericScoresKeys, PlayerGenericScore} from 'src/utils/types';
-import {players} from 'src/utils/constants';
+import { AllGenericScores, AllGenericScoresKeys, PlayerGenericScore } from 'src/utils/types';
+import { players } from 'src/utils/constants';
 
 // TODO fix this type
 export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGenericScores: (value: Map<number, any>) => void) => {
@@ -33,7 +33,7 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
 
     response.data.forEach(({ player, key, value }) => {
       if (!fetchedScores.has(player)) {
-        fetchedScores.set(player, {...defaultObject});
+        fetchedScores.set(player, { ...defaultObject });
       }
       const playerScore = fetchedScores.get(player);
       if (playerScore) {
@@ -44,7 +44,7 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
 
     players.forEach(player => {
       if (!fetchedScores.has(player.id)) {
-        fetchedScores.set(player.id, {...defaultObject});
+        fetchedScores.set(player.id, { ...defaultObject });
       }
     });
 

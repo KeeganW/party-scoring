@@ -58,7 +58,15 @@ export interface PlayerType {
   id: number;
   color: string;
 }
+
 export interface HistoryItem {
   player: number;
   key: keyof AllGenericScores;
+}
+
+export type Descriptions = Record<string, Description>
+
+export interface Description {
+  title: string;
+  text: string;
 }

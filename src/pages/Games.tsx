@@ -1,5 +1,6 @@
-import {Container, Button, Group, Center, Stack, Title} from '@mantine/core';
-import { Link } from 'react-router';
+import { Container, Button, Group, Center, Stack, Title, ActionIcon } from '@mantine/core';
+import { Link, useNavigate } from 'react-router';
+import { IconArrowLeft } from '@tabler/icons-react';
 
 const buttons = [
   { text: 'Beer Die', link: '/beer_die' },
@@ -12,13 +13,20 @@ const buttons = [
   { text: 'Snappa', link: '/snappa' },
 ];
 
-export default function Welcome() {
+export const Games = () => {
+  const navigate = useNavigate();
   return (
     <Center style={{ height: '100vh' }}>
       <Container style={{ maxWidth: 300, textAlign: 'center' }}>
         <Stack gap="md">
-          <Title order={1}>Welcome!</Title>
-          <Title order={6}>Please select what game you are playing right now.</Title>
+          <Group gap="lg">
+            <ActionIcon onClick={() => {
+              navigate('/')
+            }}>
+              <IconArrowLeft />
+            </ActionIcon>
+            <Title order={6}>Please select what game you are playing right now.</Title>
+          </Group>
           <Stack>
             {buttons.map((button, index) => (
               <Group key={index} grow>
