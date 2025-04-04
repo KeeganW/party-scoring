@@ -19,7 +19,7 @@ export const useWebSocket = (urlPath: string): WebSocketAction => {
   useEffect(() => {
     const connect = () => {
       const baseUrl = window.location.hostname.includes('github.io')
-        ? 'ws://api.boardgameleague.io/ws/'
+        ? 'wss://api.boardgameleague.io/ws/'
         : 'ws://localhost:8000/ws/';
       const url = `${baseUrl}${urlPath}/`;
       const ws = new WebSocket(url);
