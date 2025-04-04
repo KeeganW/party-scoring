@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import {AllGenericScoresKeys, type BeerDieScore} from "src/utils/connect";
+import { useEffect, useState } from 'react';
+import { AllGenericScoresKeys } from 'src/utils/types';
 
-export type Update = {
+export interface Update {
   player: number;
   key: AllGenericScoresKeys;
   value: number;
-};
+}
 
-export type WebSocketAction = {
+export interface WebSocketAction {
   updates: Update[],
   sendMessage: any,
 }
@@ -24,7 +24,7 @@ export const useWebSocket = (urlPath: string): WebSocketAction => {
       const url = `${baseUrl}${urlPath}/`;
       const ws = new WebSocket(url);
 
-      ws.onmessage = (event: MessageEvent<string>) => setUpdates((prev) => [...prev, JSON.parse(event.data) as Update]);
+      ws.onmessage = (event: MessageEvent<string>) => { setUpdates((prev) => [...prev, JSON.parse(event.data) as Update]); };
       ws.onclose = () => setTimeout(connect, 3000); // Reconnect after 3s
       setSocket(ws);
     };
@@ -48,16 +48,14 @@ export const setScoreFromWebSocket = <T extends AllGenericScoresKeys>(webSocket:
 
   // Get the latest update
   const latestUpdate = webSocket.updates.slice(-1)[0];
-  if (latestUpdate) {
-    // An update exists, so process it
-    setScores((draft: any) => {
-      const playerScores = draft.get(latestUpdate.player);
-      if (playerScores) {
-        // We have the player, so set the player's score to the new value
-        const key = latestUpdate.key as keyof T;
-        playerScores[key] = latestUpdate.value;
-        draft.set(latestUpdate.player, playerScores);
-      }
-    });
-  }
+  // An update exists, so process it
+  setScores((draft: any) => {
+    const playerScores = draft.get(latestUpdate.player);
+    if (playerScores) {
+      // We have the player, so set the player's score to the new value
+      const key = latestUpdate.key as keyof T;
+      playerScores[key] = latestUpdate.value;
+      draft.set(latestUpdate.player, playerScores);
+    }
+  });
 }

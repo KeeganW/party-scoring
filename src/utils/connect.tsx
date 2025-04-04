@@ -1,68 +1,6 @@
 import axios from 'axios';
-import {PlayerType} from './types';
-
-export const players: PlayerType[] = [
-  { name: 'Jedd', id: 310, color: 'cyan' },
-  { name: 'Keegan', id: 1, color: 'orange' },
-  { name: 'Ken', id: 312, color: 'purple' },
-  { name: 'Matt', id: 190, color: 'green' },
-  { name: 'Max', id: 313, color: 'yellow' },
-  { name: 'Mike', id: 314, color: 'gray' },
-  { name: 'Nick', id: 311, color: 'red' },
-];
-
-export interface BeerDieScore {
-  pointsDie: number;
-  sinksDie: number;
-  sunkDie: number;
-}
-
-export interface CheersGovernorScore {
-  forgot: number;
-  addedNumber: number;
-}
-
-export interface HockeyScore {
-  scoredOn: number;
-  finishedDrink: number;
-  stoppedQuarter: number;
-  failStoppedQuarter: number;
-}
-
-export interface KingsCupScore {
-  poppedCan: number;
-  kingRule: number;
-}
-
-export interface MagicalMixersScore {
-  targetted: number;
-  drinkWater: number;
-}
-
-export interface PassThePigsScore {
-  above40: number;
-  piggedOut: number;
-}
-
-export interface RideTheBusScore {
-  busRider: number;
-  emptyHand: number;
-}
-
-export interface SnappaScore {
-  points: number;
-  sinks: number;
-  sunk: number;
-}
-
-export type AllGenericScores = BeerDieScore | CheersGovernorScore | HockeyScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore;
-export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof HockeyScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore;
-
-export interface PlayerGenericScore<K extends string> {
-  player: number;
-  key: K;
-  value: number;
-}
+import {AllGenericScores, AllGenericScoresKeys, PlayerGenericScore} from 'src/utils/types';
+import {players} from 'src/utils/constants';
 
 // TODO fix this type
 export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGenericScores: (value: Map<number, any>) => void) => {
@@ -72,7 +10,6 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
   const url = `${baseUrl}generic_score/`;
   try {
     const response = await axios.get<PlayerGenericScore<T>[]>(url);
-    console.log(response.data)
 
     const fetchedScores = new Map<number, AllGenericScores>();
     const defaultObject = {

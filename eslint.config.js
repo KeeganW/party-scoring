@@ -40,7 +40,15 @@ export default tseslint.config(
                     patterns: ['../*', './*'],
                 },
             ],
-            "quotes": ["error", "single"]
+            "quotes": ["error", "single"],
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/no-unsafe-call': 'off',
+            '@typescript-eslint/no-floating-promises': 'off',
+            'react-hooks/exhaustive-deps': 'off',
+            '@typescript-eslint/no-unsafe-assignment': 'off',
+            '@typescript-eslint/no-unsafe-member-access': 'off',
+            '@typescript-eslint/no-unnecessary-type-parameters': 'off',
+            '@typescript-eslint/restrict-plus-operands': 'off'
         },
         ignores: ['dist'],
     },

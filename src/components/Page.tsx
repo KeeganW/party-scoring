@@ -24,7 +24,9 @@ export const Page = ({title, players, actions, undoAction, undoDisabled}: PagePr
           <div style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'white', zIndex: 1000, padding: '10px 0' }}>
             <Center>
               <Group gap="lg">
-                <ActionIcon onClick={() => navigate('/')}>
+                <ActionIcon onClick={() => {
+                  navigate('/')
+                }}>
                   <IconArrowLeft />
                 </ActionIcon>
                 <Title order={2}>{title}</Title>

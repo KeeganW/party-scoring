@@ -1,5 +1,5 @@
-import {AllGenericScoresKeys, setGenericScore} from 'src/utils/connect';
-import {WebSocketAction} from "src/utils/websocket";
+import {AllGenericScoresKeys} from 'src/utils/types';
+import {WebSocketAction} from 'src/utils/websocket';
 
 // TODO fix this type
 export const handleScore = (playerId: number, type: AllGenericScoresKeys, setHistory: any, setScores: any, webSocket: WebSocketAction) => {

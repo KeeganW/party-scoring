@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { Page } from 'src/components/Page';
 import { useImmer } from 'use-immer';
-import {HistoryItem, PlayerType} from 'src/utils/types';
-import {fetchGenericScore, players, type HockeyScore} from 'src/utils/connect';
+import {HistoryItem, HockeyScore, PlayerType} from 'src/utils/types';
+import {fetchGenericScore} from 'src/utils/connect';
 import {handleUndo} from 'src/utils/commonFunctions';
 import {GenericScoreCardItem} from 'src/components/GenericScoreCardItem';
-import {setScoreFromWebSocket, useWebSocket} from "src/utils/websocket";
+import {setScoreFromWebSocket, useWebSocket} from 'src/utils/websocket';
+import {players} from 'src/utils/constants';
 
 export const Hockey = () => {
-  const webSocket = useWebSocket("generic-score");
+  const webSocket = useWebSocket('generic-score');
   const [scores, setScores] = useImmer<Map<number, HockeyScore>>(new Map());
   const [history, setHistory] = useImmer<HistoryItem[]>([]);
 
