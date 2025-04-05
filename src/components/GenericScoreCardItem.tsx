@@ -1,7 +1,7 @@
 import { PlayerType } from 'src/utils/types';
 import type { AllGenericScoresKeys } from 'src/utils/types';
 import { ActionIcon, Text, Group } from '@mantine/core';
-import { handleScore } from 'src/utils/commonFunctions';
+import { handleScore, triggerEmojiRain } from 'src/utils/commonFunctions';
 import { IconPlus } from '@tabler/icons-react';
 import { WebSocketAction } from 'src/utils/websocket';
 
@@ -17,7 +17,7 @@ export const GenericScoreCardItem = ({ player, action, title, scores, setHistory
       <Text>
         {title}: {playerScore[action] ?? 0}
       </Text>
-      <ActionIcon color={player.color} onClick={() => { handleScore(player.id, action, setHistory, setScores, webSocket); }}>
+      <ActionIcon color={player.color} onClick={() => { handleScore(player.id, action, setHistory, setScores, webSocket); if (action.includes('sinks')) triggerEmojiRain(); }}>
         <IconPlus />
       </ActionIcon>
     </Group>

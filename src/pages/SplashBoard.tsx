@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 import { IconArrowLeft } from '@tabler/icons-react';
 import { setScoreFromWebSocket, useWebSocket } from 'src/utils/websocket';
 import styles from 'src/pages/SplashBoard.module.css';
+import { triggerEmojiRain } from 'src/utils/commonFunctions';
 
 export const SplashBoard = () => {
   const navigate = useNavigate();
@@ -34,19 +35,6 @@ export const SplashBoard = () => {
       setTotal(totalScore);
     }
   }, [scores]);
-
-  const triggerEmojiRain = () => {
-    for (let i = 0; i < 50; i++) { // Increase emoji count
-      const emoji = document.createElement('div');
-      emoji.className = styles.emoji;
-      emoji.style.left = `${Math.random() * 100}vw`;
-      emoji.style.top = `${-50 - Math.random() * 100}px`; // Start above the viewport
-      emoji.style.animationDelay = `${Math.random() * 0.5}s`; // Randomize start delay
-      emoji.textContent = '💦';
-      document.body.appendChild(emoji);
-      setTimeout(() => { emoji.remove(); }, 3000); // Remove after 3 seconds, matching fall duration
-    }
-  };
 
   useEffect(() => {
     if (prevTotal === 0) {
