@@ -7,11 +7,16 @@ import { handleUndo } from 'src/utils/commonFunctions';
 import { GenericScoreCardItem } from 'src/components/GenericScoreCardItem';
 import { setScoreFromWebSocket, useWebSocket } from 'src/utils/websocket';
 import { DESCRIPTIONS, players } from 'src/utils/constants';
+import {useLocation} from "react-router";
 
 export const Hockey = () => {
   const webSocket = useWebSocket('generic-score');
   const [scores, setScores] = useImmer<Map<number, HockeyScore>>(new Map());
   const [history, setHistory] = useImmer<HistoryItem[]>([]);
+  const location = useLocation();
+
+  // Extract query parameters from the hash
+  const params = new URLSearchParams(location.search.split('?')[1]);
 
   useEffect(() => {
     fetchGenericScore<keyof HockeyScore>(setScores);
@@ -25,11 +30,11 @@ export const Hockey = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem webSocket={webSocket} player={player} action={'goal'} title={'Scored a Goal'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem webSocket={webSocket} player={player} action={'scoredOn'} title={'Hit by quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem webSocket={webSocket} player={player} action={'finishedDrink'} title={'Finished drink'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem webSocket={webSocket} player={player} action={'stoppedQuarter'} title={'Stopped quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem webSocket={webSocket} player={player} action={'failStoppedQuarter'} title={'Failed to stop quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'goal'} title={'Scored a Goal'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'scoredOn'} title={'Hit by quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'finishedDrink'} title={'Finished drink'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'stoppedQuarter'} title={'Stopped quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'failStoppedQuarter'} title={'Failed to stop quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 
