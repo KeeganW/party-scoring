@@ -53,7 +53,7 @@ export const SplashBoard = () => {
   }, [total]);
 
   return (
-    <Center style={{ height: '100vh', background: '#f4f4f4' }}>
+    <Center style={{ height: '100dvh', background: '#f4f4f4' }}>
       <Container style={{ maxWidth: 350, textAlign: 'center', padding: 20, borderRadius: 10, background: 'white', boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)' }}>
         <Stack gap="md">
           <Group gap="lg">

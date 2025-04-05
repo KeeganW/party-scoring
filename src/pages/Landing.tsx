@@ -9,7 +9,7 @@ const buttons = [
 
 export const Landing = () => {
   return (
-    <Center style={{ height: '100vh' }}>
+    <Center style={{ height: '100dvh' }}>
       <Container style={{ maxWidth: 300, textAlign: 'center' }}>
         <Stack gap="md">
           <Group gap="lg">
