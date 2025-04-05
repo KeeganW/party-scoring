@@ -14,21 +14,21 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
     const fetchedScores = new Map<number, AllGenericScores>();
     const defaultObject = {
       // Beer Die
-      pointsDie: 0, sinksDie: 0, sunkDie: 0,
+      pointsDie: 0, missDie: 0, missCatchDie: 0, sinksDie: 0, sunkDie: 0,
       // Cheers Governor
       forgot: 0, addedNumber: 0,
       // Hockey
-      scoredOn: 0, finishedDrink: 0, stoppedQuarter: 0, failStoppedQuarter: 0,
+      goal: 0, scoredOn: 0, finishedDrink: 0, stoppedQuarter: 0, failStoppedQuarter: 0,
       // Kings Cup
       poppedCan: 0, kingRule: 0,
       // Magical Mixers
-      targetted: 0, drinkWater: 0,
+      targetted: 0, spellcaster: 0, drinkWater: 0,
       // Pass the Pigs
-      above40: 0, piggedOut: 0,
+      above: 0, piggedOut: 0,
       // Ride the Bus
       busRider: 0, emptyHand: 0,
       // Snappa
-      points: 0, sinks: 0, sunk: 0,
+      points: 0, miss: 0, sinks: 0, sunk: 0,
     };
 
     response.data.forEach(({ player, key, value }) => {

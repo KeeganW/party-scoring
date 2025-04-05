@@ -26,6 +26,8 @@ export const Snappa = () => {
   const actions = ({ player }: { player: PlayerType }) => {
     return [
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'points'} title={'Points'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem webSocket={webSocket} player={player} action={'miss'} title={'Miss Table'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem webSocket={webSocket} player={player} action={'missCatch'} title={'Miss Catch'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'sinks'} title={'Sinks'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'sunk'} title={'Sunk'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
@@ -33,8 +35,8 @@ export const Snappa = () => {
 
   const undoDisabled = history.length === 0;
 
-  const { points, sinks, sunk } = DESCRIPTIONS;
-  const descriptions = { points, sinks, sunk };
+  const { points, miss, missCatch, sinks, sunk } = DESCRIPTIONS;
+  const descriptions = { points, miss, missCatch, sinks, sunk };
 
   return (
     <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />

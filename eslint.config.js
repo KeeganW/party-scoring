@@ -49,6 +49,7 @@ export default tseslint.config(
             '@typescript-eslint/no-unsafe-assignment': 'off',
             '@typescript-eslint/no-unsafe-member-access': 'off',
             '@typescript-eslint/no-unnecessary-type-parameters': 'off',
+            '@typescript-eslint/restrict-template-expressions': 'off',
             '@typescript-eslint/restrict-plus-operands': 'off'
         },
         ignores: ['dist'],

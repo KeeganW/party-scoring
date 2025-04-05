@@ -26,6 +26,8 @@ export const BeerDie = () => {
   const actions = ({ player }: { player: PlayerType }) => {
     return [
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'pointsDie'} title={'Points'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem webSocket={webSocket} player={player} action={'missDie'} title={'Miss Table'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem webSocket={webSocket} player={player} action={'missCatchDie'} title={'Miss Catch'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'sinksDie'} title={'Sinks'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'sunkDie'} title={'Sunk'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
@@ -33,8 +35,8 @@ export const BeerDie = () => {
 
   const undoDisabled = history.length === 0;
 
-  const { pointsDie, sinksDie, sunkDie } = DESCRIPTIONS;
-  const descriptions = { pointsDie, sinksDie, sunkDie };
+  const { pointsDie, missDie, missCatchDie, sinksDie, sunkDie } = DESCRIPTIONS;
+  const descriptions = { pointsDie, missDie, missCatchDie, sinksDie, sunkDie };
 
   return (
     <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />

@@ -7,6 +7,8 @@ export interface PlayerGenericScore<K extends string> {
 
 export interface BeerDieScore {
   pointsDie: number;
+  missDie: number;
+  missCatchDie: number;
   sinksDie: number;
   sunkDie: number;
 }
@@ -17,6 +19,7 @@ export interface CheersGovernorScore {
 }
 
 export interface HockeyScore {
+  goal: number;
   scoredOn: number;
   finishedDrink: number;
   stoppedQuarter: number;
@@ -25,16 +28,18 @@ export interface HockeyScore {
 
 export interface KingsCupScore {
   poppedCan: number;
+  messedUp: number;
   kingRule: number;
 }
 
 export interface MagicalMixersScore {
   targetted: number;
+  spellcaster: number;
   drinkWater: number;
 }
 
 export interface PassThePigsScore {
-  above40: number;
+  above: number;
   piggedOut: number;
 }
 
@@ -45,6 +50,8 @@ export interface RideTheBusScore {
 
 export interface SnappaScore {
   points: number;
+  miss: number;
+  missCatch: number;
   sinks: number;
   sunk: number;
 }

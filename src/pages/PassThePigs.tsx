@@ -25,15 +25,15 @@ export const PassThePigs = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem webSocket={webSocket} player={player} action={'above40'} title={'Scored above 40'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem webSocket={webSocket} player={player} action={'above'} title={'Scored above 40'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'piggedOut'} title={'Pigged out'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 
   const undoDisabled = history.length === 0;
 
-  const { above40, piggedOut } = DESCRIPTIONS;
-  const descriptions = { above40, piggedOut };
+  const { above, piggedOut } = DESCRIPTIONS;
+  const descriptions = { above, piggedOut };
 
   return (
     <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />

@@ -25,6 +25,7 @@ export const Hockey = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
+      <GenericScoreCardItem webSocket={webSocket} player={player} action={'goal'} title={'Scored a Goal'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'scoredOn'} title={'Hit by quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'finishedDrink'} title={'Finished drink'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'stoppedQuarter'} title={'Stopped quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
@@ -34,8 +35,8 @@ export const Hockey = () => {
 
   const undoDisabled = history.length === 0;
 
-  const { scoredOn, finishedDrink, stoppedQuarter, failStoppedQuarter } = DESCRIPTIONS;
-  const descriptions = { scoredOn, finishedDrink, stoppedQuarter, failStoppedQuarter };
+  const { goal, scoredOn, finishedDrink, stoppedQuarter, failStoppedQuarter } = DESCRIPTIONS;
+  const descriptions = { goal, scoredOn, finishedDrink, stoppedQuarter, failStoppedQuarter };
 
   return (
     <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />

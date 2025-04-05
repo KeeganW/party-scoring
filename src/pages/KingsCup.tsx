@@ -26,14 +26,15 @@ export const KingsCup = () => {
   const actions = ({ player }: { player: PlayerType }) => {
     return [
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'poppedCan'} title={'Popped Can'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem webSocket={webSocket} player={player} action={'messedUp'} title={'Messed Up'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem webSocket={webSocket} player={player} action={'kingRule'} title={'King Rule'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 
   const undoDisabled = history.length === 0;
 
-  const { poppedCan, kingRule } = DESCRIPTIONS;
-  const descriptions = { poppedCan, kingRule };
+  const { poppedCan, messedUp, kingRule } = DESCRIPTIONS;
+  const descriptions = { poppedCan, messedUp, kingRule };
 
   return (
     <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />
