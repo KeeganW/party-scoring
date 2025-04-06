@@ -6,7 +6,7 @@ import '@mantine/notifications/styles.css';
 import { MantineProvider } from '@mantine/core';
 import Routes from 'src/Routes';
 import { enableMapSet } from 'immer'
-import {Notifications} from "@mantine/notifications";
+import { Notifications } from '@mantine/notifications';
 
 enableMapSet()
 

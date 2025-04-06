@@ -1,8 +1,8 @@
 import { PlayerType } from 'src/utils/types';
 import type { AllGenericScoresKeys } from 'src/utils/types';
 import { ActionIcon, Text, Group } from '@mantine/core';
-import {handleReduce, handleScore, triggerEmojiRain} from 'src/utils/commonFunctions';
-import {IconMinus, IconPlus} from '@tabler/icons-react';
+import { handleReduce, handleScore, triggerEmojiRain } from 'src/utils/commonFunctions';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { WebSocketAction } from 'src/utils/websocket';
 
 // TODO fix this type

@@ -51,7 +51,7 @@ export const setScoreFromWebSocket = <T extends AllGenericScoresKeys>(webSocket:
 
   // Get the latest update
   const latestUpdate = webSocket.updates.slice(-1)[0];
-  if ("error" in latestUpdate) {
+  if ('error' in latestUpdate) {
     // Create a mantine notification warning about the error
     console.warn(latestUpdate.error);
     notifications.clean()

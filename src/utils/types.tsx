@@ -66,10 +66,10 @@ export interface PlayerType {
   color: string;
 }
 
-export interface HistoryItem {
+export type HistoryItem = {
   player: number;
   key: keyof AllGenericScores;
-}
+} | undefined
 
 export type Descriptions = Record<string, Description>
 

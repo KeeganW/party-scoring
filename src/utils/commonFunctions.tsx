@@ -1,9 +1,10 @@
-import { AllGenericScoresKeys } from 'src/utils/types';
+import { AllGenericScoresKeys, HistoryItem } from 'src/utils/types';
 import { WebSocketAction } from 'src/utils/websocket';
 import styles from 'src/utils/commonFunctionality.module.css';
 
 // TODO fix this type
 export const handleScore = (playerId: number, type: AllGenericScoresKeys, setHistory: any, setScores: any, webSocket: WebSocketAction) => {
+  setHistory({ player: playerId, key: type });
   webSocket.sendMessage({ player: playerId, key: type, value: 1 });
 };
 
@@ -13,23 +14,18 @@ export const handleReduce = (playerId: number, type: AllGenericScoresKeys, setHi
 };
 
 // TODO fix this type
-export const handleUndo = (setHistory: any, setScores: any, webSocket: WebSocketAction) => {
-  if (history.length > 0) {
+export const handleUndo = (history: HistoryItem, setHistory: any, setScores: any, webSocket: WebSocketAction) => {
+  if (history) {
+    const playerId = history.player;
+    const type = history.key;
     // TODO fix this type
-    setHistory((draft: any) => {
-      const lastState = draft.pop();
-      if (lastState) {
-        const playerId = lastState.player;
-        const type = lastState.key;
-        // TODO fix this type
-        setScores((scoresDraft: any) => {
-          const playerScore = scoresDraft.get(playerId);
-          if (playerScore) {
-            webSocket.sendMessage({ player: playerId, key: type, value: -1 });
-          }
-        });
+    setScores((scoresDraft: any) => {
+      const playerScore = scoresDraft.get(playerId);
+      if (playerScore) {
+        webSocket.sendMessage({ player: playerId, key: type, value: -1, bypassWait: true });
       }
     });
+    setHistory(undefined);
   }
 };
 

@@ -1,4 +1,4 @@
-import {Container, Button, Group, Center, Stack, Title, ActionIcon, Text} from '@mantine/core';
+import { Container, Button, Group, Center, Stack, ActionIcon, Text } from '@mantine/core';
 import { Link, useNavigate } from 'react-router';
 import { IconArrowLeft } from '@tabler/icons-react';
 
