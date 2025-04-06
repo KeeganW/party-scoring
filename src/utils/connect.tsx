@@ -54,6 +54,20 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
   }
 };
 
+export const fetchAllGenericScore = async () => {
+  const baseUrl = window.location.hostname.includes('github.io')
+    ? 'https://api.boardgameleague.io/'
+    : 'http://localhost:8000/';
+  const url = `${baseUrl}generic_score/`;
+  try {
+    const response = await axios.get(url);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
 
 export const setGenericScore = async (newScore: PlayerGenericScore<AllGenericScoresKeys>) => {
   const baseUrl = window.location.hostname.includes('github.io')

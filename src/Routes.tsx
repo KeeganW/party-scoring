@@ -12,12 +12,14 @@ import { KingsCup } from 'src/pages/KingsCup';
 import { BeerDie } from 'src/pages/BeerDie';
 import { SplashBoard } from 'src/pages/SplashBoard';
 import { Leaderboard } from 'src/pages/Leaderboard';
+import {Graph} from "src/pages/Graph";
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/games" element={<Games />} />
+      <Route path="/graph" element={<Graph />} />
       <Route path="/beer_die" element={<BeerDie />} />
       <Route path="/cheers_governor" element={<CheersGovernor />} />
       <Route path="/hockey" element={<Hockey />} />
