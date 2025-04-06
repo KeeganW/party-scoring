@@ -1,11 +1,14 @@
+import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
 import { AllGenericScoresKeys } from 'src/utils/types';
 
-export interface Update {
+export type Update = {
   player: number;
   key: AllGenericScoresKeys;
   value: number;
-}
+} | {
+  error: string;
+};
 
 export interface WebSocketAction {
   updates: Update[],
@@ -48,14 +51,27 @@ export const setScoreFromWebSocket = <T extends AllGenericScoresKeys>(webSocket:
 
   // Get the latest update
   const latestUpdate = webSocket.updates.slice(-1)[0];
-  // An update exists, so process it
-  setScores((draft: any) => {
-    const playerScores = draft.get(latestUpdate.player);
-    if (playerScores) {
-      // We have the player, so set the player's score to the new value
-      const key = latestUpdate.key as keyof T;
-      playerScores[key] = latestUpdate.value;
-      draft.set(latestUpdate.player, playerScores);
-    }
-  });
+  if ("error" in latestUpdate) {
+    // Create a mantine notification warning about the error
+    console.warn(latestUpdate.error);
+    notifications.clean()
+    notifications.show({
+      color: 'red',
+      message: latestUpdate.error,
+    })
+  } else {
+    // An update exists, so process it
+    setScores((draft: any) => {
+      const playerScores = draft.get(latestUpdate.player);
+      if (playerScores) {
+        const key = latestUpdate.key as keyof T;
+        console.log(key, latestUpdate)
+
+        // We have the player, so set the player's score to the new value
+        playerScores[key] = latestUpdate.value;
+        draft.set(latestUpdate.player, playerScores);
+      }
+    });
+  }
+
 }

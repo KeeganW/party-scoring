@@ -38,7 +38,7 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
       const playerScore = fetchedScores.get(player);
       if (playerScore) {
         // TODO fix this type
-        (playerScore as any)[key] = value;
+        (playerScore as any)[key] += value;
       }
     });
 
