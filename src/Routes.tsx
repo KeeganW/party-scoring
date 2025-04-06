@@ -12,24 +12,27 @@ import { KingsCup } from 'src/pages/KingsCup';
 import { BeerDie } from 'src/pages/BeerDie';
 import { SplashBoard } from 'src/pages/SplashBoard';
 import { Leaderboard } from 'src/pages/Leaderboard';
-import {Graph} from "src/pages/Graph";
+import { Wavelength } from 'src/pages/Wavelength';
+import { Graph } from 'src/pages/Graph';
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/games" element={<Games />} />
       <Route path="/graph" element={<Graph />} />
-      <Route path="/beer_die" element={<BeerDie />} />
-      <Route path="/cheers_governor" element={<CheersGovernor />} />
-      <Route path="/hockey" element={<Hockey />} />
-      <Route path="/kings_cup" element={<KingsCup />} />
-      <Route path="/magical_mixers" element={<MagicalMixers />} />
-      <Route path="/pass_the_pigs" element={<PassThePigs />} />
-      <Route path="/ride_the_bus" element={<RideTheBus />} />
-      <Route path="/snappa" element={<Snappa />} />
       <Route path="/splash_board" element={<SplashBoard />} />
       <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/games" element={<Games />} />
+        {/* Games */}
+        <Route path="/beer_die" element={<BeerDie />} />
+        <Route path="/cheers_governor" element={<CheersGovernor />} />
+        <Route path="/hockey" element={<Hockey />} />
+        <Route path="/kings_cup" element={<KingsCup />} />
+        <Route path="/magical_mixers" element={<MagicalMixers />} />
+        <Route path="/pass_the_pigs" element={<PassThePigs />} />
+        <Route path="/ride_the_bus" element={<RideTheBus />} />
+        <Route path="/snappa" element={<Snappa />} />
+        <Route path="/wavelength" element={<Wavelength />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

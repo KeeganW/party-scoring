@@ -56,8 +56,14 @@ export interface SnappaScore {
   sunk: number;
 }
 
-export type AllGenericScores = BeerDieScore | CheersGovernorScore | HockeyScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore;
-export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof HockeyScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore;
+export interface WavelengthScore {
+  primaryGuessTarget: number;
+  secondaryGuessCorrect: number;
+  secondaryGuessWrong: number;
+}
+
+export type AllGenericScores = BeerDieScore | CheersGovernorScore | HockeyScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore | WavelengthScore;
+export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof HockeyScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore | keyof WavelengthScore;
 
 
 export interface PlayerType {

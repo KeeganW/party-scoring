@@ -24,7 +24,7 @@ export const Graph = () => {
     fetchData();
   }, []);
 
-  const aggregatedData = data.reduce((acc, { key, player, timestamp, value }) => {
+  const aggregatedData = data.reduce<Record<string, Record<string, Record<number, number>>>>((acc, { key, player, timestamp, value }) => {
     const date = new Date(timestamp).toLocaleString();
     if (!acc[key]) acc[key] = {};
     if (!acc[key][date]) {
@@ -42,7 +42,7 @@ export const Graph = () => {
     if (!acc[key][date][player]) acc[key][date][player] = 0;
     acc[key][date][player] += value;
     return acc;
-  }, {} as Record<string, Record<string, Record<number, number>>>);
+  }, {});
 
   const filteredData = Object.entries(aggregatedData[selectedMetric || ''] || {}).flatMap(([date, playersData]) => {
     return Object.entries(playersData).map(([player, value]) => ({
@@ -55,13 +55,13 @@ export const Graph = () => {
   });
 
   const selectedMetricDescription = Object.entries(DESCRIPTIONS).filter(([key, description]) => key === selectedMetric)
-  const hrnMetric = selectedMetricDescription.length > 0 ? selectedMetricDescription[0][1].title : "";
+  const hrnMetric = selectedMetricDescription.length > 0 ? selectedMetricDescription[0][1].title : '';
 
   return (
     <div>
       <div>
         <label htmlFor="player-select">Select Player:</label>
-        <select id="player-select" onChange={e => setSelectedPlayer(Number(e.target.value))}>
+        <select id="player-select" onChange={e => { setSelectedPlayer(Number(e.target.value)); }}>
           <option value="">No Players</option>
           {players.map(player => (
             <option key={player.id} value={player.id}>{player.name}</option>
@@ -70,7 +70,7 @@ export const Graph = () => {
       </div>
       <div>
         <label htmlFor="metric-select">Select Metric:</label>
-        <select id="metric-select" onChange={e => setSelectedMetric(e.target.value)}>
+        <select id="metric-select" onChange={e => { setSelectedMetric(e.target.value); }}>
           <option value="">No Metrics</option>
           {Object.entries(DESCRIPTIONS).map(([key, description]) => (
             <option key={key} value={key}>{description.title}</option>
@@ -84,7 +84,7 @@ export const Graph = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="value" name={hrnMetric || ""} />
+          <Line type="monotone" dataKey="value" name={hrnMetric || ''} />
         </LineChart>
       </ResponsiveContainer>
     </div>

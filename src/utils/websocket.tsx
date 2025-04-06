@@ -65,7 +65,6 @@ export const setScoreFromWebSocket = <T extends AllGenericScoresKeys>(webSocket:
       const playerScores = draft.get(latestUpdate.player);
       if (playerScores) {
         const key = latestUpdate.key as keyof T;
-        console.log(key, latestUpdate)
 
         // We have the player, so set the player's score to the new value
         playerScores[key] = latestUpdate.value;

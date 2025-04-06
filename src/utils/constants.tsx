@@ -50,6 +50,10 @@ export const DESCRIPTIONS: Descriptions = {
   'missCatch': { title: 'Miss Catch', text: 'Missed an obviously catchable die which was purely your fault.' },
   'sinks': { title: 'Sinks', text: 'The thrower earns a point for each die sunk against their opponents. Splash hit!' },
   'sunk': { title: 'Sunk', text: 'The person sunk earns this point. Better not roll a 5...' },
+  // Wavelength
+  'primaryGuessTarget': { title: 'Hit Target', text: '' },
+  'secondaryGuessCorrect': { title: 'Correct Side', text: '' },
+  'secondaryGuessWrong': { title: 'Wrong Side', text: '' },
 }
 
 export const POSITIVE_ACTIONS = [
@@ -72,6 +76,9 @@ export const POSITIVE_ACTIONS = [
   // Snappa
   'points',
   'sinks',
+  // Wavelength
+  'primaryGuessTarget',
+  'secondaryGuessCorrect',
 ];
 
 export const NEUTRAL_ACTIONS = [
@@ -105,4 +112,6 @@ export const NEGATIVE_ACTIONS = [
   // Snappa
   'miss',
   'missCatch',
+  // Wavelength
+  'secondaryGuessWrong',
 ];

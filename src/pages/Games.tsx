@@ -11,6 +11,7 @@ const buttons = [
   { text: 'Pass the Pigs', link: '/pass_the_pigs' },
   { text: 'Ride the Bus', link: '/ride_the_bus' },
   { text: 'Snappa', link: '/snappa' },
+  { text: 'Wavelength', link: '/wavelength' },
 ];
 
 export const Games = () => {

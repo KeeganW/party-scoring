@@ -28,7 +28,9 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
       // Ride the Bus
       busRider: 0, emptyHand: 0,
       // Snappa
-      points: 0, miss: 0, sinks: 0, sunk: 0,
+      points: 0, miss: 0, missCatch: 0, sinks: 0, sunk: 0,
+      // Wavelength
+      primaryGuessTarget: 0, secondaryGuessCorrect: 0, secondaryGuessWrong: 0,
     };
 
     response.data.forEach(({ player, key, value }) => {
@@ -75,9 +77,7 @@ export const setGenericScore = async (newScore: PlayerGenericScore<AllGenericSco
     : 'http://localhost:8000/';
   const url = `${baseUrl}generic_score/`;
   try {
-    const response = await axios.post(url, newScore);
-
-    console.log(response);
+    await axios.post(url, newScore);
   } catch (error) {
     console.error('Error fetching data:', error);
   }
