@@ -30,9 +30,9 @@ export const KingsCup = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'poppedCan'} title={'Popped Can'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'messedUp'} title={'Messed Up'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'kingRule'} title={'King Rule'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'poppedCan'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'messedUp'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'kingRule'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 

@@ -30,11 +30,11 @@ export const Hockey = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'goal'} title={'Scored a Goal'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'scoredOn'} title={'Hit by quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'finishedDrink'} title={'Finished drink'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'stoppedQuarter'} title={'Stopped quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'failStoppedQuarter'} title={'Failed to stop quarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'goal'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'scoredOn'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'finishedDrink'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'stoppedQuarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'failStoppedQuarter'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 

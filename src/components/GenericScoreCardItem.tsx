@@ -4,13 +4,15 @@ import { ActionIcon, Text, Group } from '@mantine/core';
 import { handleReduce, handleScore, triggerEmojiRain } from 'src/utils/commonFunctions';
 import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { WebSocketAction } from 'src/utils/websocket';
+import {DESCRIPTIONS} from "../utils/constants";
 
 // TODO fix this type
-export const GenericScoreCardItem = ({ player, action, title, scores, setHistory, setScores, webSocket, enableMinus = false }: { player: PlayerType, action: AllGenericScoresKeys, title: string, scores: any, setHistory: any, setScores: any, webSocket: WebSocketAction, enableMinus?: boolean }) => {
+export const GenericScoreCardItem = ({ player, action, scores, setHistory, setScores, webSocket, enableMinus = false }: { player: PlayerType, action: AllGenericScoresKeys, scores: any, setHistory: any, setScores: any, webSocket: WebSocketAction, enableMinus?: boolean }) => {
   const playerScore = scores.get(player.id);
   if (!playerScore) {
     return null;
   }
+  const title = DESCRIPTIONS[action]?.title ?? action;
 
   return (
     <Group justify="space-between">
@@ -23,7 +25,7 @@ export const GenericScoreCardItem = ({ player, action, title, scores, setHistory
             <IconMinus />
           </ActionIcon>
         )}
-        <ActionIcon size={'sm'} color={player.color} onClick={() => { handleScore(player.id, action, setHistory, setScores, webSocket); if (action.includes('sinks')) triggerEmojiRain(); }}>
+        <ActionIcon color={player.color} onClick={() => { handleScore(player.id, action, setHistory, setScores, webSocket); if (action.includes('sinks')) triggerEmojiRain(); }}>
           <IconPlus />
         </ActionIcon>
       </Group>

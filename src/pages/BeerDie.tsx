@@ -30,11 +30,11 @@ export const BeerDie = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'pointsDie'} title={'Points'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'missDie'} title={'Miss Table'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'missCatchDie'} title={'Miss Catch'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'sinksDie'} title={'Sinks'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'sunkDie'} title={'Sunk'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'pointsDie'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'missDie'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'missCatchDie'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'sinksDie'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'sunkDie'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 

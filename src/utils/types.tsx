@@ -33,7 +33,7 @@ export interface KingsCupScore {
 }
 
 export interface MagicalMixersScore {
-  targetted: number;
+  targeted: number;
   spellcaster: number;
   drinkWater: number;
 }

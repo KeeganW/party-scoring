@@ -30,8 +30,8 @@ export const RideTheBus = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'busRider'} title={'Bus Rider'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'emptyHand'} title={'Empty Hand'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'busRider'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'emptyHand'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 

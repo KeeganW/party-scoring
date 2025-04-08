@@ -51,10 +51,10 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
           </Center>
           <Group gap="sm" justify="center" style={{ flexWrap: 'wrap' }}>
             {players.map((player, playerIndex) => (
-              <Card shadow="sm" key={playerIndex} className={styles.cardContainer} style={{ minWidth: '160px' }}>
+              <Card shadow="sm" key={playerIndex} className={styles.cardContainer} style={{ minWidth: '200px' }}>
                 <Card.Section>
                   <Center>
-                    <Title order={5}>{player.name}</Title>
+                    <Title order={4}>{player.name}</Title>
                   </Center>
                 </Card.Section>
                 <Stack>

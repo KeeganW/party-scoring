@@ -30,8 +30,8 @@ export const PassThePigs = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'above'} title={'Scored above 40'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'piggedOut'} title={'Pigged out'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'above'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'piggedOut'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 

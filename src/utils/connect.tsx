@@ -22,7 +22,7 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
       // Kings Cup
       poppedCan: 0, kingRule: 0,
       // Magical Mixers
-      targetted: 0, spellcaster: 0, drinkWater: 0,
+      targeted: 0, spellcaster: 0, drinkWater: 0,
       // Pass the Pigs
       above: 0, piggedOut: 0,
       // Ride the Bus

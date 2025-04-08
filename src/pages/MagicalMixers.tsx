@@ -30,16 +30,16 @@ export const MagicalMixers = () => {
 
   const actions = ({ player }: { player: PlayerType }) => {
     return [
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'targetted'} title={'Targetted'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'spellcaster'} title={'Spellcaster'} scores={scores} setHistory={setHistory} setScores={setScores} />,
-      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'drinkWater'} title={'Drink Water'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'targeted'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'spellcaster'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('enableMinus')} webSocket={webSocket} player={player} action={'drinkWater'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 
   const undoDisabled = !history;
 
-  const { targetted, spellcaster, drinkWater } = DESCRIPTIONS;
-  const descriptions = { targetted, spellcaster, drinkWater };
+  const { targeted, spellcaster, drinkWater } = DESCRIPTIONS;
+  const descriptions = { targeted, spellcaster, drinkWater };
 
   return (
     <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />
