@@ -23,7 +23,7 @@ export const GenericScoreCardItem = ({ player, action, title, scores, setHistory
             <IconMinus />
           </ActionIcon>
         )}
-        <ActionIcon color={player.color} onClick={() => { handleScore(player.id, action, setHistory, setScores, webSocket); if (action.includes('sinks')) triggerEmojiRain(); }}>
+        <ActionIcon size={'sm'} color={player.color} onClick={() => { handleScore(player.id, action, setHistory, setScores, webSocket); if (action.includes('sinks')) triggerEmojiRain(); }}>
           <IconPlus />
         </ActionIcon>
       </Group>

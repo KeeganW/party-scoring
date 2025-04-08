@@ -51,9 +51,9 @@ export const DESCRIPTIONS: Descriptions = {
   'sinks': { title: 'Sinks', text: 'The thrower earns a point for each die sunk against their opponents. Splash hit!' },
   'sunk': { title: 'Sunk', text: 'The person sunk earns this point. Better not roll a 5...' },
   // Wavelength
-  'primaryGuessTarget': { title: 'Hit Target', text: '' },
-  'secondaryGuessCorrect': { title: 'Correct Side', text: '' },
-  'secondaryGuessWrong': { title: 'Wrong Side', text: '' },
+  'primaryGuessTarget': { title: 'Hit Target', text: 'The guesser hit the target. You must be on the same wavelength as the hinter!' },
+  'secondaryGuessCorrect': { title: 'Correct Side', text: 'If you guessed the side the target was on from the guesser\'s dial location, you get this point. You must be pretty dialed in.' },
+  'secondaryGuessWrong': { title: 'Wrong Side', text: 'You guessed the wrong side of the dial. Maybe rethink how well you know the hinter...' },
 }
 
 export const POSITIVE_ACTIONS = [

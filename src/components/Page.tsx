@@ -2,6 +2,7 @@ import { ActionIcon, Button, Card, Center, Container, Group, Stack, Title } from
 import { IconArrowLeft } from '@tabler/icons-react';
 import { useNavigate } from 'react-router';
 import { Descriptions, PlayerType } from 'src/utils/types';
+import styles from 'src/components/Page.module.css';
 
 export interface ActionDisplayProps {
   player: PlayerType;
@@ -36,10 +37,21 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
             </Center>
           </div>
         </Center>
-        <Stack style={{ marginTop: '80px' }}>
-          <Group gap="sm" justify="center">
+        <Stack style={{ marginTop: '60px' }}>
+          <Center>
+            {descriptions && (
+              <div style={{ marginBottom: '15px', fontSize: '0.9rem', color: '#555' }}>
+                {Object.entries(descriptions).map(([key, description]) => (
+                  <div key={key}>
+                    <strong>{description.title}:</strong> {description.text}
+                  </div>
+                ))}
+              </div>
+            )}
+          </Center>
+          <Group gap="sm" justify="center" style={{ flexWrap: 'wrap' }}>
             {players.map((player, playerIndex) => (
-              <Card shadow="sm" key={playerIndex} style={{ minWidth: '170px' }}>
+              <Card shadow="sm" key={playerIndex} className={styles.cardContainer} style={{ minWidth: '160px' }}>
                 <Card.Section>
                   <Center>
                     <Title order={5}>{player.name}</Title>
@@ -51,17 +63,6 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
               </Card>
             ))}
           </Group>
-          <Center>
-            {descriptions && (
-              <div style={{ marginTop: '15px', fontSize: '0.9rem', color: '#555' }}>
-                {Object.entries(descriptions).map(([key, description]) => (
-                  <div key={key}>
-                    <strong>{description.title}:</strong> {description.text}
-                  </div>
-                ))}
-              </div>
-            )}
-          </Center>
         </Stack>
       </Container>
     </Center>
