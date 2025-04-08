@@ -28,18 +28,18 @@ export const DESCRIPTIONS: Descriptions = {
 
   // Hockey
   'goal': { title: 'Hit a Can', text: 'You hit someone else\'s can, making them drink. Sniped it!' },
-  'scoredOn': { title: 'Scored On', text: 'The person who\'s can got hit earns this point. Play better defense!' },
+  'scoredOn': { title: 'Scored On', text: 'The person whose can got hit earns this point. Play better defense!' },
   'finishedDrink': { title: 'Finished Drink', text: 'Get a point for finishing your drink. You\'re being targeted!' },
-  'stoppedQuarter': { title: 'Stopped Quarter', text: 'The person who stops a quarter without it falling on its side in Hockey gets a point. If the table is too easy to do so, no points. Diamond hands!' },
+  'stoppedQuarter': { title: 'Stopped Quarter', text: 'The person who stops a quarter without it falling on its side in Hockey gets a point. Diamond hands!' },
   'failStoppedQuarter': { title: 'Failed Stopped Quarter', text: 'The person who fails to stop a quarter in Hockey, because it fell over, gets this point. Close!' },
 
   // Kings Cup
-  'poppedCan': { title: 'Popped Can', text: 'When placing cards under the can tab, if it pops, you get this point. You broke the seal!' },
+  'poppedCan': { title: 'Popped Can', text: 'If the can tab pops when placing your card under it, you get this point. You broke the seal!' },
   'messedUp': { title: 'Messed Up', text: 'When you mess up a table wide game like categories, you earn this point.' },
   'kingRule': { title: 'King Rule', text: 'Drew a king? Make a new rule, and get this point. Monarch of mayhem!' },
 
   // Magical Mixers
-  'targeted': { title: 'Targeted', text: 'Someone targeted you with a spell, you get this consolation point. Only valid when playing wizard party rules. You’ve been hexed!' },
+  'targeted': { title: 'Targeted', text: 'Someone targeted you with a spell, so you get this consolation point. Only valid when playing wizard party rules. You’ve been hexed!' },
   'spellcaster': { title: 'Spellcaster', text: 'Cast a spell on someone. Magical mischief earns you this point.' },
   'drinkWater': { title: 'Drink Water', text: 'Forced to drink water, guess you need to get good. You get this point. Only valid when playing wizard party rules.' },
 
@@ -48,7 +48,7 @@ export const DESCRIPTIONS: Descriptions = {
   'piggedOut': { title: 'Pigged Out', text: 'Pigged out? Gross. Get this point.' },
 
   // Ride the Bus
-  'busRider': { title: 'Bus Rider', text: 'Riding the bus by having the most remaining points in your hand. Buckle up! It’s going to be a bumpy ride.' },
+  'busRider': { title: 'Bus Rider', text: 'You have the most remaining points in your hand, so you ride the bus. Buckle up! It’s going to be a bumpy ride.' },
   'emptyHand': { title: 'Empty Hand', text: 'You emptied your hand! Nice work.' },
 
   // Snappa
