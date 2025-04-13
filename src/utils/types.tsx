@@ -18,6 +18,11 @@ export interface CheersGovernorScore {
   addedNumber: number;
 }
 
+export interface CamelUpScore {
+  firstPlace: number;
+  lastPlace: number;
+}
+
 export interface HockeyScore {
   goal: number;
   scoredOn: number;
@@ -62,8 +67,8 @@ export interface WavelengthScore {
   secondaryGuessWrong: number;
 }
 
-export type AllGenericScores = BeerDieScore | CheersGovernorScore | HockeyScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore | WavelengthScore;
-export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof HockeyScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore | keyof WavelengthScore;
+export type AllGenericScores = BeerDieScore | CheersGovernorScore | CamelUpScore | HockeyScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore | WavelengthScore;
+export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof CamelUpScore | keyof HockeyScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore | keyof WavelengthScore;
 
 
 export interface PlayerType {

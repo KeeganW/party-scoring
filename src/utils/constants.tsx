@@ -26,6 +26,10 @@ export const DESCRIPTIONS: Descriptions = {
   'forgot': { title: 'Forgot', text: 'Forgot a rule in Cheers Governor? You get this point. Don\'t forget next time!' },
   'addedNumber': { title: 'Added Number', text: 'The person who made a new rule (said 21) gets this point.' },
 
+  // Camel Up
+  'firstPlace': { title: 'First Place', text: 'You bet on a camel in first place. Nice work!' },
+  'lastPlace': { title: 'Last Place', text: 'You bet on a camel in last place. Better luck next time!' },
+
   // Hockey
   'goal': { title: 'Hit a Can', text: 'You hit someone else\'s can, making them drink. Sniped it!' },
   'scoredOn': { title: 'Scored On', text: 'The person whose can got hit earns this point. Play better defense!' },
@@ -70,6 +74,8 @@ export const POSITIVE_ACTIONS = [
   'sinksDie',
   // Cheers Governor
   'addedNumber',
+  // Camel Up
+  'firstPlace',
   // Hockey
   'goal',
   'stoppedQuarter',
@@ -109,6 +115,8 @@ export const NEGATIVE_ACTIONS = [
   'missCatchDie',
   // Cheers Governor
   'forgot',
+  // Camel Up
+  'lastPlace',
   // Hockey
   'scoredOn',
   'failStoppedQuarter',

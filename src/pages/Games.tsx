@@ -1,10 +1,11 @@
 import { Container, Button, Group, ScrollArea, Center, Stack, ActionIcon, Text } from '@mantine/core';
 import { Link, useNavigate } from 'react-router';
-import { IconArrowLeft, IconBeer, IconCrown, IconIceSkating, IconGlassFullFilled, IconWand, IconPig, IconBus, IconDice5, IconRipple } from '@tabler/icons-react';
+import { IconArrowLeft, IconBeer, IconCrown, IconIceSkating, IconGlassFullFilled, IconWand, IconPig, IconBus, IconDice5, IconRipple, IconBlobFilled } from '@tabler/icons-react';
 
 const buttons = [
   { text: 'Beer Die', link: '/beer_die', icon: <IconBeer />, color: 'green' },
   { text: 'Cheers Governor', link: '/cheers_governor', icon: <IconGlassFullFilled />, color: 'orange' },
+  { text: 'Camel Up', link: '/camel_up', icon: <IconBlobFilled />, color: 'indigo' },
   { text: 'Hockey', link: '/hockey', icon: <IconIceSkating />, color: 'blue' },
   { text: 'Kings Cup', link: '/kings_cup', icon: <IconCrown />, color: 'yellow' },
   { text: 'Magical Mixers', link: '/magical_mixers', icon: <IconWand />, color: 'black' },
