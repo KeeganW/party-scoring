@@ -13,7 +13,7 @@ export const Landing = () => {
       <Container style={{ maxWidth: 300, textAlign: 'center' }}>
         <Stack gap="md">
           <Group gap="lg">
-            <Title order={1}>Welcome!</Title>
+            <Title order={1} style={{ color: '#007acc' }}>Welcome!</Title>
           </Group>
           <Stack>
             {buttons.map((button, index) => (

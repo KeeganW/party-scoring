@@ -6,7 +6,7 @@ export const players: PlayerType[] = [
   { name: 'Ken', id: 312, color: 'purple' },
   { name: 'Matt', id: 190, color: 'green' },
   { name: 'Max', id: 313, color: 'yellow' },
-  { name: 'Mike', id: 314, color: 'gray' },
+  { name: 'Mike', id: 314, color: 'indigo' },
   { name: 'Nick', id: 311, color: 'red' },
 ];
 

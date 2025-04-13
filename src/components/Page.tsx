@@ -31,7 +31,7 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
                 }}>
                   <IconArrowLeft />
                 </ActionIcon>
-                <Title order={2}>{title}</Title>
+                <Title order={2} style={{ color: '#007acc' }}>{title}</Title>
                 <Button onClick={undoAction} disabled={undoDisabled}>Undo</Button>
               </Group>
             </Center>
