@@ -37,8 +37,8 @@ export const CamelUp = () => {
 
   const undoDisabled = !history;
 
-  const { forgot, addedNumber } = DESCRIPTIONS;
-  const descriptions = { forgot, addedNumber };
+  const { firstPlace, lastPlace } = DESCRIPTIONS;
+  const descriptions = { firstPlace, lastPlace };
 
   return (
     <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />

@@ -27,8 +27,8 @@ export const DESCRIPTIONS: Descriptions = {
   'addedNumber': { title: 'Added Number', text: 'The person who made a new rule (said 21) gets this point.' },
 
   // Camel Up
-  'firstPlace': { title: 'First Place', text: 'You bet on a camel in first place. Nice work!' },
-  'lastPlace': { title: 'Last Place', text: 'You bet on a camel in last place. Better luck next time!' },
+  'firstPlace': { title: 'First Place', text: 'You bet on a camel that finished the round in first place. Nice work!' },
+  'lastPlace': { title: 'Last Place', text: 'You bet on a camel that finished the round in last place. Better luck next time!' },
 
   // Hockey
   'goal': { title: 'Hit a Can', text: 'You hit someone else\'s can, making them drink. Sniped it!' },
