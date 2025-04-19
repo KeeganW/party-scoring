@@ -31,6 +31,11 @@ export interface HockeyScore {
   failStoppedQuarter: number;
 }
 
+export interface HuesAndCuesScore {
+  inside: number;
+  outsideFive: number;
+}
+
 export interface KingsCupScore {
   poppedCan: number;
   messedUp: number;
@@ -67,8 +72,8 @@ export interface WavelengthScore {
   secondaryGuessWrong: number;
 }
 
-export type AllGenericScores = BeerDieScore | CheersGovernorScore | CamelUpScore | HockeyScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore | WavelengthScore;
-export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof CamelUpScore | keyof HockeyScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore | keyof WavelengthScore;
+export type AllGenericScores = BeerDieScore | CheersGovernorScore | CamelUpScore | HockeyScore | HuesAndCuesScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore | WavelengthScore;
+export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof CamelUpScore | keyof HockeyScore | keyof HuesAndCuesScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore | keyof WavelengthScore;
 
 
 export interface PlayerType {

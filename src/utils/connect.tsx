@@ -21,6 +21,8 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
       firstPlace: 0, lastPlace: 0,
       // Hockey
       goal: 0, scoredOn: 0, finishedDrink: 0, stoppedQuarter: 0, failStoppedQuarter: 0,
+      // Hues and Cues
+      inside: 0, outsideFive: 0,
       // Kings Cup
       poppedCan: 0, kingRule: 0,
       // Magical Mixers
