@@ -52,7 +52,7 @@ export const Games = () => {
                       {button.icon}
                     </div>
                     {button.text}
-                    <div style={{ marginLeft: '1rem' }}>
+                    <div style={{ marginLeft: '1rem', transform: 'scaleX(-1)' }}>
                       {button.icon}
                     </div>
                   </Button>
