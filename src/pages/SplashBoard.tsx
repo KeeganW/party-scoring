@@ -29,7 +29,7 @@ export const SplashBoard = () => {
   useEffect(() => {
     if (scores.size > 0) {
       const totalScore: number = Array.from(scores.values()).reduce((acc: number, score: any): number => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+         
         return score.sinksDie + score.sinks + acc;
       }, 0);
       setTotal(totalScore);

@@ -13,14 +13,14 @@ import { BeerDie } from 'src/pages/BeerDie';
 import { SplashBoard } from 'src/pages/SplashBoard';
 import { Leaderboard } from 'src/pages/Leaderboard';
 import { Wavelength } from 'src/pages/Wavelength';
-import { Graph } from 'src/pages/Graph';
+import { Timeline } from 'src/pages/Timeline';
 import { CamelUp } from 'src/pages/CamelUp';
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/graph" element={<Graph />} />
+      <Route path="/timeline" element={<Timeline />} />
       <Route path="/splash_board" element={<SplashBoard />} />
       <Route path="/leaderboard" element={<Leaderboard />} />
       <Route path="/games" element={<Games />} />

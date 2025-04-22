@@ -90,6 +90,15 @@ export type HistoryItem = {
 export type Descriptions = Record<string, Description>
 
 export interface Description {
+  game: string;
   title: string;
   text: string;
+}
+
+export interface ScoreData {
+  id: number;
+  key: string;
+  player: number;
+  timestamp: string;
+  value: number;
 }

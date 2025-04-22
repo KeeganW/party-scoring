@@ -5,6 +5,7 @@ const buttons = [
   { text: 'Games', link: '/games' },
   { text: 'Leaderboard', link: '/leaderboard' },
   { text: 'Splash Board', link: '/splash_board' },
+  { text: 'Timeline', link: '/timeline' },
 ];
 
 export const Landing = () => {

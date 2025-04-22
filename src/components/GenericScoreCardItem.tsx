@@ -12,7 +12,7 @@ export const GenericScoreCardItem = ({ player, action, scores, setHistory, setSc
   if (!playerScore) {
     return null;
   }
-  const title = DESCRIPTIONS[action].title ?? action;
+  const title = DESCRIPTIONS[action].title;
 
   return (
     <Group justify="space-between">
