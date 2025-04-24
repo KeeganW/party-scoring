@@ -16,6 +16,7 @@ import { Wavelength } from 'src/pages/Wavelength';
 import { Timeline } from 'src/pages/Timeline';
 import { CamelUp } from 'src/pages/CamelUp';
 import {Teams} from "src/pages/Teams";
+import { HuesAndCues } from "src/pages/HuesAndCues";
 
 export default function AppRoutes() {
   return (
@@ -31,6 +32,7 @@ export default function AppRoutes() {
       <Route path="/cheers_governor" element={<CheersGovernor />} />
       <Route path="/camel_up" element={<CamelUp />} />
       <Route path="/hockey" element={<Hockey />} />
+      <Route path="/hues_and_cues" element={<HuesAndCues />} />
       <Route path="/kings_cup" element={<KingsCup />} />
       <Route path="/magical_mixers" element={<MagicalMixers />} />
       <Route path="/pass_the_pigs" element={<PassThePigs />} />
