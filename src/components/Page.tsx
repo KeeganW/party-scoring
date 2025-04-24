@@ -3,6 +3,7 @@ import { IconArrowLeft } from '@tabler/icons-react';
 import { useNavigate } from 'react-router';
 import { Descriptions, PlayerType } from 'src/utils/types';
 import styles from 'src/components/Page.module.css';
+import { useState } from 'react';
 
 export interface ActionDisplayProps {
   player: PlayerType;
@@ -19,6 +20,19 @@ export interface PageProps {
 
 export const Page = ({ descriptions, title, players, actions, undoAction, undoDisabled }: PageProps) => {
   const navigate = useNavigate();
+  const [toggledPlayers, setToggledPlayers] = useState<Record<string, boolean>>(
+    Object.fromEntries(players.map(player => [player.name, true]))
+  );
+
+  const handleToggle = (playerName: string) => {
+    setToggledPlayers(prev => ({
+      ...prev,
+      [playerName]: !prev[playerName],
+    }));
+  };
+
+  const filteredPlayers = players.filter(player => toggledPlayers[player.name]);
+
   return (
     <Center>
       <Container>
@@ -26,9 +40,7 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
           <div style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'white', zIndex: 1000, padding: '10px 0' }}>
             <Center>
               <Group gap="lg">
-                <ActionIcon onClick={() => {
-                  navigate('/games')
-                }}>
+                <ActionIcon onClick={() => navigate('/games')}>
                   <IconArrowLeft />
                 </ActionIcon>
                 <Title order={2} style={{ color: '#007acc' }}>{title}</Title>
@@ -51,6 +63,17 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
           </Center>
           <Group gap="sm" justify="center" style={{ flexWrap: 'wrap' }}>
             {players.map((player, playerIndex) => (
+              <Button
+                key={playerIndex}
+                variant={toggledPlayers[player.name] ? 'filled' : 'outline'}
+                onClick={() => handleToggle(player.name)}
+              >
+                {player.name}
+              </Button>
+            ))}
+          </Group>
+          <Group gap="sm" justify="center" style={{ flexWrap: 'wrap' }}>
+            {filteredPlayers.map((player, playerIndex) => (
               <Card shadow="sm" key={playerIndex} className={styles.cardContainer} style={{ minWidth: '200px' }}>
                 <Card.Section>
                   <Center>
