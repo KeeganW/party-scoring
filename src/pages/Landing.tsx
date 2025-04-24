@@ -5,6 +5,7 @@ const buttons = [
   { text: 'Games', link: '/games' },
   { text: 'Leaderboard', link: '/leaderboard' },
   { text: 'Splash Board', link: '/splash_board' },
+  { text: 'Teams', link: '/teams' },
   { text: 'Timeline', link: '/timeline' },
 ];
 

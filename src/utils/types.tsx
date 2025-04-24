@@ -66,14 +66,59 @@ export interface SnappaScore {
   sunk: number;
 }
 
+export interface TeamsScore {
+  keeganAndKen: number;
+  keeganAndJedd: number;
+  keeganAndMax: number;
+  keeganAndMatt: number;
+  keeganAndMike: number;
+  keeganAndNick: number;
+  kenAndKeegan: number;
+  kenAndJedd: number;
+  kenAndMax: number;
+  kenAndMatt: number;
+  kenAndMike: number;
+  kenAndNick: number;
+  jeddAndKeegan: number;
+  jeddAndKen: number;
+  jeddAndMax: number;
+  jeddAndMatt: number;
+  jeddAndMike: number;
+  jeddAndNick: number;
+  maxAndKeegan: number;
+  maxAndKen: number;
+  maxAndJedd: number;
+  maxAndMatt: number;
+  maxAndMike: number;
+  maxAndNick: number;
+  mattAndKeegan: number;
+  mattAndKen: number;
+  mattAndJedd: number;
+  mattAndMax: number;
+  mattAndMike: number;
+  mattAndNick: number;
+  mikeAndKeegan: number;
+  mikeAndKen: number;
+  mikeAndJedd: number;
+  mikeAndMax: number;
+  mikeAndMatt: number;
+  mikeAndNick: number;
+  nickAndKeegan: number;
+  nickAndKen: number;
+  nickAndJedd: number;
+  nickAndMax: number;
+  nickAndMatt: number;
+  nickAndMike: number;
+}
+
 export interface WavelengthScore {
   primaryGuessTarget: number;
   secondaryGuessCorrect: number;
   secondaryGuessWrong: number;
 }
 
-export type AllGenericScores = BeerDieScore | CheersGovernorScore | CamelUpScore | HockeyScore | HuesAndCuesScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore | WavelengthScore;
-export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof CamelUpScore | keyof HockeyScore | keyof HuesAndCuesScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore | keyof WavelengthScore;
+export type AllGenericScores = BeerDieScore | CheersGovernorScore | CamelUpScore | HockeyScore | HuesAndCuesScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore | TeamsScore | WavelengthScore;
+export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof CamelUpScore | keyof HockeyScore | keyof HuesAndCuesScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore | keyof TeamsScore | keyof WavelengthScore;
 
 
 export interface PlayerType {

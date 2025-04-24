@@ -15,6 +15,7 @@ import { Leaderboard } from 'src/pages/Leaderboard';
 import { Wavelength } from 'src/pages/Wavelength';
 import { Timeline } from 'src/pages/Timeline';
 import { CamelUp } from 'src/pages/CamelUp';
+import {Teams} from "src/pages/Teams";
 
 export default function AppRoutes() {
   return (
@@ -24,6 +25,7 @@ export default function AppRoutes() {
       <Route path="/splash_board" element={<SplashBoard />} />
       <Route path="/leaderboard" element={<Leaderboard />} />
       <Route path="/games" element={<Games />} />
+      <Route path="/teams" element={<Teams />} />
       {/* Games */}
       <Route path="/beer_die" element={<BeerDie />} />
       <Route path="/cheers_governor" element={<CheersGovernor />} />

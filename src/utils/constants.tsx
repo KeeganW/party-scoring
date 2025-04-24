@@ -27,7 +27,7 @@ export const DESCRIPTIONS: Descriptions = {
   'addedNumber': { game: 'Cheers Governor', title: 'Added Number', text: 'The person who made a new rule (said 21) gets this point.' },
 
   // Camel Up
-  'firstPlace': { game: 'Camel Up', title: 'First Place', text: 'Anyone with a betting sheet from the camel that finished the round in first place gets this point. Nice work!' },
+  'firstPlace': { game: 'Camel Up', title: 'First Place', text: 'The person (or their partner) with the 5 point betting sheet from the camel that finished the round in first place gets this point. Nice work!' },
   'lastPlace': { game: 'Camel Up', title: 'Last Place', text: 'Anyone with a betting sheet from the camel in last place earns this point. Better luck next time!' },
 
   // Hockey

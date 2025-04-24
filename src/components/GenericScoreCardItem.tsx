@@ -7,17 +7,17 @@ import { WebSocketAction } from 'src/utils/websocket';
 import { DESCRIPTIONS } from 'src/utils/constants';
 
 // TODO fix this type
-export const GenericScoreCardItem = ({ player, action, scores, setHistory, setScores, webSocket, enableMinus = false }: { player: PlayerType, action: AllGenericScoresKeys, scores: any, setHistory: any, setScores: any, webSocket: WebSocketAction, enableMinus?: boolean }) => {
+export const GenericScoreCardItem = ({ player, action, scores, setHistory, setScores, webSocket, enableMinus = false, title }: { player: PlayerType, action: AllGenericScoresKeys, scores: any, setHistory: any, setScores: any, webSocket: WebSocketAction, enableMinus?: boolean, title?: string }) => {
   const playerScore = scores.get(player.id);
   if (!playerScore) {
     return null;
   }
-  const title = DESCRIPTIONS[action].title;
+  const fullTitle = title || DESCRIPTIONS[action]?.title || action;
 
   return (
     <Group justify="space-between">
       <Text>
-        {title}: {playerScore[action] ?? 0}
+        {fullTitle}: {playerScore[action] ?? 0}
       </Text>
       <Group>
         {enableMinus && (
