@@ -35,13 +35,14 @@ export const Snappa = () => {
       <GenericScoreCardItem enableMinus={!!params.get('minus')} webSocket={webSocket} player={player} action={'missCatch'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem enableMinus={!!params.get('minus')} webSocket={webSocket} player={player} action={'sinks'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem enableMinus={!!params.get('minus')} webSocket={webSocket} player={player} action={'sunk'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('minus')} webSocket={webSocket} player={player} action={'rolledFive'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 
   const undoDisabled = !history;
 
-  const { points, miss, missCatch, sinks, sunk } = DESCRIPTIONS;
-  const descriptions = { points, miss, missCatch, sinks, sunk };
+  const { points, miss, missCatch, sinks, sunk, rolledFive } = DESCRIPTIONS;
+  const descriptions = { points, miss, missCatch, sinks, sunk, rolledFive };
 
   return (
     <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />

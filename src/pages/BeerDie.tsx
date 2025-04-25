@@ -35,13 +35,14 @@ export const BeerDie = () => {
       <GenericScoreCardItem enableMinus={!!params.get('minus')} webSocket={webSocket} player={player} action={'missCatchDie'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem enableMinus={!!params.get('minus')} webSocket={webSocket} player={player} action={'sinksDie'} scores={scores} setHistory={setHistory} setScores={setScores} />,
       <GenericScoreCardItem enableMinus={!!params.get('minus')} webSocket={webSocket} player={player} action={'sunkDie'} scores={scores} setHistory={setHistory} setScores={setScores} />,
+      <GenericScoreCardItem enableMinus={!!params.get('minus')} webSocket={webSocket} player={player} action={'rolledFiveDie'} scores={scores} setHistory={setHistory} setScores={setScores} />,
     ];
   };
 
   const undoDisabled = !history;
 
-  const { pointsDie, missDie, missCatchDie, sinksDie, sunkDie } = DESCRIPTIONS;
-  const descriptions = { pointsDie, missDie, missCatchDie, sinksDie, sunkDie };
+  const { pointsDie, missDie, missCatchDie, sinksDie, sunkDie, rolledFiveDie } = DESCRIPTIONS;
+  const descriptions = { pointsDie, missDie, missCatchDie, sinksDie, sunkDie, rolledFiveDie };
 
   return (
     <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />

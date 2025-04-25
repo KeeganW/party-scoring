@@ -21,6 +21,7 @@ export const DESCRIPTIONS: Descriptions = {
   'missCatchDie': { game: 'Beer Die', title: 'Miss Catch', text: 'If someone missed an obviously catchable die which was purely their fault, then they get this point. Butterfingers!' },
   'sinksDie': { game: 'Beer Die', title: 'Sinks', text: 'The thrower earns a point for each die sunk against their opponents. Splash hit!' },
   'sunkDie': { game: 'Beer Die', title: 'Sunk', text: 'The person sunk earns this point. Better not roll a 5...' },
+  'rolledFiveDie': { game: 'Beer Die', title: 'Rolled Five', text: 'After being sunk, rolled a 5. Oof.' },
 
   // Cheers Governor
   'forgot': { game: 'Cheers Governor', title: 'Forgot', text: 'Forgot a rule in Cheers Governor? The person who forgot gets this point. Don\'t forget next time!' },
@@ -65,6 +66,7 @@ export const DESCRIPTIONS: Descriptions = {
   'missCatch': { game: 'Snappa', title: 'Miss Catch', text: 'If someone missed an obviously catchable die which was purely their fault, then they get this point. Butterfingers!' },
   'sinks': { game: 'Snappa', title: 'Sinks', text: 'The thrower earns a point for each die sunk against their opponents. Splash hit!' },
   'sunk': { game: 'Snappa', title: 'Sunk', text: 'The person sunk earns this point. Better not roll a 5...' },
+  'rolledFive': { game: 'Snappa', title: 'Rolled Five', text: 'After being sunk, rolled a 5. Oof.' },
 
   // Wavelength
   'primaryGuessTarget': { game: 'Wavelength', title: 'Hit Target', text: 'The guesser hit the target. They must be on the same wavelength as the hinter!' },

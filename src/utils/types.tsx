@@ -11,6 +11,7 @@ export interface BeerDieScore {
   missCatchDie: number;
   sinksDie: number;
   sunkDie: number;
+  rolledFiveDie: number;
 }
 
 export interface CheersGovernorScore {
@@ -64,6 +65,7 @@ export interface SnappaScore {
   missCatch: number;
   sinks: number;
   sunk: number;
+  rolledFive: number;
 }
 
 export interface TeamsScore {
