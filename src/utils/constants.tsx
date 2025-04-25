@@ -15,6 +15,7 @@ export const getPlayerById = (id: number): PlayerType => {
 };
 
 export const DESCRIPTIONS: Descriptions = {
+  'beer': { game: 'Drink', title: 'Drink', text: 'You drank a drink, nice.' },
   // Beer Die
   'pointsDie': { game: 'Beer Die', title: 'Points', text: 'The thrower earns a point for each die dropped by their opponents. Should have had better hands...' },
   'missDie': { game: 'Beer Die', title: 'Miss Table', text: 'The thrower missed the table? Take this point. Shame...' },

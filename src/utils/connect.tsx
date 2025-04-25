@@ -13,8 +13,9 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
 
     const fetchedScores = new Map<number, AllGenericScores>();
     const defaultObject = {
+      beer: 0,
       // Beer Die
-      pointsDie: 0, missDie: 0, missCatchDie: 0, sinksDie: 0, sunkDie: 0,
+      pointsDie: 0, missDie: 0, missCatchDie: 0, sinksDie: 0, sunkDie: 0, rolledFiveDie: 0,
       // Cheers Governor
       forgot: 0, addedNumber: 0,
       // Camel Up
@@ -32,7 +33,7 @@ export const fetchGenericScore = async <T extends AllGenericScoresKeys>(setGener
       // Ride the Bus
       busRider: 0, emptyHand: 0,
       // Snappa
-      points: 0, miss: 0, missCatch: 0, sinks: 0, sunk: 0,
+      points: 0, miss: 0, missCatch: 0, sinks: 0, sunk: 0, rolledFive: 0,
       // Wavelength
       primaryGuessTarget: 0, secondaryGuessCorrect: 0, secondaryGuessWrong: 0,
 

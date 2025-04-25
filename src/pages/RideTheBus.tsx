@@ -8,6 +8,7 @@ import { GenericScoreCardItem } from 'src/components/GenericScoreCardItem';
 import { setScoreFromWebSocket, useWebSocket } from 'src/utils/websocket';
 import { DESCRIPTIONS, players } from 'src/utils/constants';
 import { useLocation } from 'react-router';
+import {Title} from "@mantine/core";
 
 export const RideTheBus = () => {
   const webSocket = useWebSocket('generic-score');
@@ -35,12 +36,21 @@ export const RideTheBus = () => {
     ];
   };
 
+  const beerCount = ({ player }: { player: PlayerType }) => {
+    return (
+      <div>
+        <Title order={4}>{player.name}</Title>
+        <GenericScoreCardItem enableMinus={!!params.get('minus')} webSocket={webSocket} player={player} action={'beer'} scores={scores} setHistory={setHistory} setScores={setScores} />
+      </div>
+    )
+  };
+
   const undoDisabled = !history;
 
   const { busRider, emptyHand } = DESCRIPTIONS;
   const descriptions = { busRider, emptyHand };
 
   return (
-    <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }} undoDisabled={undoDisabled} />
+    <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }}  undoDisabled={undoDisabled} beerCount={beerCount} />
   );
 };

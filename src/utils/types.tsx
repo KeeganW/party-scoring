@@ -113,14 +113,18 @@ export interface TeamsScore {
   nickAndMike: number;
 }
 
+export type Beer = {
+  beer: number;
+}
+
 export interface WavelengthScore {
   primaryGuessTarget: number;
   secondaryGuessCorrect: number;
   secondaryGuessWrong: number;
 }
 
-export type AllGenericScores = BeerDieScore | CheersGovernorScore | CamelUpScore | HockeyScore | HuesAndCuesScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore | TeamsScore | WavelengthScore;
-export type AllGenericScoresKeys = keyof BeerDieScore | keyof CheersGovernorScore | keyof CamelUpScore | keyof HockeyScore | keyof HuesAndCuesScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore | keyof TeamsScore | keyof WavelengthScore;
+export type AllGenericScores = Beer | BeerDieScore | CheersGovernorScore | CamelUpScore | HockeyScore | HuesAndCuesScore | KingsCupScore | MagicalMixersScore | PassThePigsScore | RideTheBusScore | SnappaScore | TeamsScore | WavelengthScore;
+export type AllGenericScoresKeys = keyof Beer | keyof BeerDieScore | keyof CheersGovernorScore | keyof CamelUpScore | keyof HockeyScore | keyof HuesAndCuesScore | keyof KingsCupScore | keyof MagicalMixersScore | keyof PassThePigsScore | keyof RideTheBusScore | keyof SnappaScore | keyof TeamsScore | keyof WavelengthScore;
 
 
 export interface PlayerType {

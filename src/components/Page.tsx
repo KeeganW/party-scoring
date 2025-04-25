@@ -16,9 +16,10 @@ export interface PageProps {
   actions: (props: ActionDisplayProps) => React.ReactNode;
   undoAction: () => void;
   undoDisabled: boolean;
+  beerCount?: (props: ActionDisplayProps) => React.ReactNode;
 }
 
-export const Page = ({ descriptions, title, players, actions, undoAction, undoDisabled }: PageProps) => {
+export const Page = ({ descriptions, title, players, actions, undoAction, undoDisabled, beerCount }: PageProps) => {
   const navigate = useNavigate();
   const [toggledPlayers, setToggledPlayers] = useState<Record<string, boolean>>(
     Object.fromEntries(players.map(player => [player.name, true]))
@@ -86,6 +87,22 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
               </Card>
             ))}
           </Group>
+          <Center style={{ marginTop: '20px' }}>
+            <Card shadow="sm" className={styles.cardContainer} style={{ minWidth: '200px' }}>
+              <Card.Section>
+                <Center>
+                  <Title order={4}>Beer Tracker</Title>
+                </Center>
+              </Card.Section>
+              <Stack>
+                {filteredPlayers.map((player) => (
+                  <div>
+                    {beerCount && beerCount({ player })}
+                  </div>
+                ))}
+              </Stack>
+            </Card>
+          </Center>
         </Stack>
       </Container>
     </Center>
