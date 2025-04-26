@@ -33,7 +33,7 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
     if (webSocket && webSocket.updates && teamGame) {
       const latestUpdate: any | undefined = webSocket.updates[webSocket.updates.length - 1]
 
-      if (latestUpdate && latestUpdate?.key && latestUpdate?.key?.includes('point') !== -1) {
+      if (latestUpdate?.key?.includes('points')) {
         const newScorePlayerId = latestUpdate.player;
         const playerName = players.find(player => player.id === newScorePlayerId)?.name;
         if (!playerName) return;
@@ -45,6 +45,19 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
           setTeamOneScore(prev => prev + 1);
         } else if (isTeamTwoPlayer) {
           setTeamTwoScore(prev => prev + 1);
+        }
+      } else if (latestUpdate?.key?.includes('sinks')) {
+        const newScorePlayerId = latestUpdate.player;
+        const playerName = players.find(player => player.id === newScorePlayerId)?.name;
+        if (!playerName) return;
+
+        const isTeamOnePlayer = teamOnePlayers[playerName];
+        const isTeamTwoPlayer = teamTwoPlayers[playerName];
+
+        if (isTeamOnePlayer) {
+          setTeamOneScore(prev => prev + 2);
+        } else if (isTeamTwoPlayer) {
+          setTeamTwoScore(prev => prev + 2);
         }
       }
     }
@@ -144,9 +157,9 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
               </Card>
             </Center>
           )}
-          <Group gap="sm" justify="center" style={{ flexWrap: 'wrap' }}>
+          <Group gap="xs" justify="center" style={{ flexWrap: 'wrap' }}>
             {playersInTeamGameOrNot.map((player, playerIndex) => (
-              <Card shadow="sm" key={playerIndex} className={styles.cardContainer} style={{ minWidth: '200px' }}>
+              <Card padding="xs" shadow="sm" key={playerIndex} className={styles.cardContainer} style={{ minWidth: '150px' }}>
                 <Card.Section>
                   <Center>
                     <Title order={4}>{player.name}</Title>
