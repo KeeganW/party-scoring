@@ -1,9 +1,10 @@
 import { ActionIcon, Button, Card, Center, Container, Group, Stack, Title } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import { useNavigate } from 'react-router';
-import { Descriptions, PlayerType } from 'src/utils/types';
+import {Descriptions, PlayerType} from 'src/utils/types';
 import styles from 'src/components/Page.module.css';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
+import { WebSocketAction} from "src/utils/websocket";
 
 export interface ActionDisplayProps {
   player: PlayerType;
@@ -17,22 +18,60 @@ export interface PageProps {
   undoAction: () => void;
   undoDisabled: boolean;
   beerCount?: (props: ActionDisplayProps) => React.ReactNode;
+  teamGame?: boolean
+  webSocket?: WebSocketAction,
 }
 
-export const Page = ({ descriptions, title, players, actions, undoAction, undoDisabled, beerCount }: PageProps) => {
+export const Page = ({ descriptions, title, players, actions, undoAction, undoDisabled, beerCount, teamGame, webSocket }: PageProps) => {
   const navigate = useNavigate();
-  const [toggledPlayers, setToggledPlayers] = useState<Record<string, boolean>>(
-    Object.fromEntries(players.map(player => [player.name, true]))
-  );
+  const [teamOnePlayers, setTeamOnePlayers] = useState<Record<string, boolean>>({});
+  const [teamTwoPlayers, setTeamTwoPlayers] = useState<Record<string, boolean>>({});
+  const [teamOneScore, setTeamOneScore] = useState<number>(0);
+  const [teamTwoScore, setTeamTwoScore] = useState<number>(0);
+
+  useEffect(() => {
+    if (webSocket && webSocket.updates && teamGame) {
+      const latestUpdate: any | undefined = webSocket.updates[webSocket.updates.length - 1]
+
+      if (latestUpdate && latestUpdate?.key && latestUpdate?.key?.includes('point') !== -1) {
+        const newScorePlayerId = latestUpdate.player;
+        const playerName = players.find(player => player.id === newScorePlayerId)?.name;
+        if (!playerName) return;
+
+        const isTeamOnePlayer = teamOnePlayers[playerName];
+        const isTeamTwoPlayer = teamTwoPlayers[playerName];
+
+        if (isTeamOnePlayer) {
+          setTeamOneScore(prev => prev + 1);
+        } else if (isTeamTwoPlayer) {
+          setTeamTwoScore(prev => prev + 1);
+        }
+      }
+    }
+  }, [webSocket?.updates]);
 
   const handleToggle = (playerName: string) => {
-    setToggledPlayers(prev => ({
-      ...prev,
-      [playerName]: !prev[playerName],
-    }));
+    if (teamGame) {
+      if (teamOnePlayers[playerName]) {
+        setTeamOnePlayers(prev => ({ ...prev, [playerName]: false }));
+        setTeamTwoPlayers(prev => ({ ...prev, [playerName]: true }));
+      } else if (teamTwoPlayers[playerName]) {
+        setTeamTwoPlayers(prev => ({ ...prev, [playerName]: false }));
+      } else {
+        setTeamOnePlayers(prev => ({ ...prev, [playerName]: true}));
+      }
+    }
   };
 
-  const filteredPlayers = players.filter(player => toggledPlayers[player.name]);
+  const resetScoreboard = () => {
+    setTeamOnePlayers({});
+    setTeamTwoPlayers({});
+    setTeamOneScore(0);
+    setTeamTwoScore(0);
+  }
+
+  const filteredPlayers = players.filter(player => teamOnePlayers[player.name] || teamTwoPlayers[player.name]);
+  const playersInTeamGameOrNot = teamGame ? filteredPlayers : players;
 
   return (
     <Center>
@@ -62,19 +101,51 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
               </div>
             )}
           </Center>
+          {teamGame && (
+            <Group gap="sm" justify="center" style={{ flexWrap: 'wrap' }}>
+              {players.map((player, playerIndex) => (
+                <Button
+                  key={playerIndex}
+                  variant={teamOnePlayers[player.name] || teamTwoPlayers[player.name] ? 'filled' : 'outline'}
+                  color={teamOnePlayers[player.name] ? 'blue' : teamTwoPlayers[player.name] ? 'red' : 'gray'}
+                  onClick={() => handleToggle(player.name)}
+                >
+                  {player.name}
+                </Button>
+              ))}
+            </Group>
+          )}
+          {teamGame && (
+            <Center style={{ marginTop: '20px' }}>
+              <Card shadow="sm" className={styles.cardContainer} style={{ minWidth: '200px' }}>
+                <Card.Section>
+                  <Center>
+                    <Title order={4}>Scoreboard</Title>
+                  </Center>
+                </Card.Section>
+                <Stack>
+                  <div style={{ color: '#1486e4', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    {Object.entries(teamOnePlayers)
+                      .filter(([_, playing]) => playing) // Only include players set to true
+                      .map(([playerName]) => playerName) // Extract player names
+                      .join(', ')}: {teamOneScore}
+                    <ActionIcon color="blue" onClick={() => setTeamOneScore((prev) => Math.max(prev - 1, 0))}>-</ActionIcon>
+                    <ActionIcon color="blue" onClick={() => setTeamOneScore((prev) => prev + 1)}>+</ActionIcon>
+                  </div>
+                  <div style={{ color: 'red', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    {Object.entries(teamTwoPlayers)
+                      .filter(([_, playing]) => playing) // Only include players set to true
+                      .map(([playerName]) => playerName) // Extract player names
+                      .join(', ')}: {teamTwoScore}
+                    <ActionIcon color="red" onClick={() => setTeamTwoScore((prev) => Math.max(prev - 1, 0))}>-</ActionIcon>
+                    <ActionIcon color="red" onClick={() => setTeamTwoScore((prev) => prev + 1)}>+</ActionIcon>
+                  </div>
+                </Stack>
+              </Card>
+            </Center>
+          )}
           <Group gap="sm" justify="center" style={{ flexWrap: 'wrap' }}>
-            {players.map((player, playerIndex) => (
-              <Button
-                key={playerIndex}
-                variant={toggledPlayers[player.name] ? 'filled' : 'outline'}
-                onClick={() => handleToggle(player.name)}
-              >
-                {player.name}
-              </Button>
-            ))}
-          </Group>
-          <Group gap="sm" justify="center" style={{ flexWrap: 'wrap' }}>
-            {filteredPlayers.map((player, playerIndex) => (
+            {playersInTeamGameOrNot.map((player, playerIndex) => (
               <Card shadow="sm" key={playerIndex} className={styles.cardContainer} style={{ minWidth: '200px' }}>
                 <Card.Section>
                   <Center>
@@ -95,7 +166,7 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
                 </Center>
               </Card.Section>
               <Stack>
-                {filteredPlayers.map((player) => (
+                {playersInTeamGameOrNot.map((player) => (
                   <div>
                     {beerCount && beerCount({ player })}
                   </div>
@@ -103,6 +174,13 @@ export const Page = ({ descriptions, title, players, actions, undoAction, undoDi
               </Stack>
             </Card>
           </Center>
+          {teamGame && (
+            <Center style={{ marginTop: '20px' }}>
+              <Card shadow="sm" className={styles.cardContainer} style={{ minWidth: '200px' }}>
+                <Button onClick={resetScoreboard}>Reset Scoreboard</Button>
+              </Card>
+            </Center>
+          )}
         </Stack>
       </Container>
     </Center>

@@ -55,6 +55,6 @@ export const Snappa = () => {
   const descriptions = { points, miss, missCatch, sinks, sunk, rolledFive };
 
   return (
-    <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }}  undoDisabled={undoDisabled} beerCount={beerCount} />
+    <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }}  undoDisabled={undoDisabled} beerCount={beerCount} teamGame={true} webSocket={webSocket} />
   );
 };

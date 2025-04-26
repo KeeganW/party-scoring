@@ -5,7 +5,7 @@ import { BeerDieScore, HistoryItem, PlayerType } from 'src/utils/types';
 import { fetchGenericScore } from 'src/utils/connect';
 import { handleUndo } from 'src/utils/commonFunctions';
 import { GenericScoreCardItem } from 'src/components/GenericScoreCardItem';
-import { setScoreFromWebSocket, useWebSocket } from 'src/utils/websocket';
+import {setScoreFromWebSocket, useWebSocket, WebSocketAction} from 'src/utils/websocket';
 import { DESCRIPTIONS, players } from 'src/utils/constants';
 import { useLocation } from 'react-router';
 import {Title} from "@mantine/core";
@@ -55,6 +55,6 @@ export const BeerDie = () => {
   const descriptions = { pointsDie, missDie, missCatchDie, sinksDie, sunkDie, rolledFiveDie };
 
   return (
-    <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }}  undoDisabled={undoDisabled} beerCount={beerCount} />
+    <Page title={title} players={players} actions={actions} descriptions={descriptions} undoAction={() => { handleUndo(history, setHistory, setScores, webSocket); }}  undoDisabled={undoDisabled} beerCount={beerCount} teamGame={true} webSocket={webSocket} />
   );
 };
